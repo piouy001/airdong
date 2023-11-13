@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import React from "react";
 
 import Header from "components/layout/Header/Header";
+import Modal from "components/layout/Modal";
 import ThemeRegistry from "components/theme/ThemeRegistry";
+import RootContextProvider from "contexts";
 
 import "./globals.css";
 
@@ -15,8 +17,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="en">
     <body>
       <ThemeRegistry>
-        <Header />
-        {children}
+        <RootContextProvider>
+          <Header />
+          {children}
+          <Modal />
+        </RootContextProvider>
       </ThemeRegistry>
     </body>
   </html>
