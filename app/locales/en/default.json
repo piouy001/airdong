@@ -1,0 +1,23 @@
+{
+  "header.search.anywhere": "Anywhere",
+  "header.search.anyweek": "Any Week",
+  "header.search.guests": "Add guests",
+  "header.menu.yourhome": "Airdong your home",
+  "header.menu.signup": "Sign Up",
+  "header.menu.login": "Login",
+  "email.required.error": "Email is required",
+  "email.valid.error": "Enter a valid email.",
+  "name.required.error": "Enter a valid email.",
+  "name.min.error": "Name must be at least 2 characters",
+  "name.max.error": "Name must be at most 12 characters",
+  "password.required.error": "Password is required.",
+  "password.min.error": "Password must be at least 10 characters",
+  "password.numbers.error": "Password must include numbers",
+  "signup.form.title": "Welcome to Airdong",
+  "signup.form.email": "Email",
+  "signup.form.name": "Name",
+  "signup.form.password": "Password",
+  "signup.form.cta": "Continue",
+  "signup.form.cta.google": "Continue with Google",
+  "signup.form.cta.github": "Continue width Github"
+}

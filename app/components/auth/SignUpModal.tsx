@@ -3,6 +3,7 @@ import { Google, GitHub } from "@mui/icons-material";
 import { Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 
 import { getEmailErrorMessages, getNameErrorMessages, getPasswordErrorMessages } from "constants/errorMessage";
@@ -15,6 +16,7 @@ const signUpFormSchema = yup.object({
 });
 
 const SignUpModal = (): React.ReactNode => {
+  const { t } = useTranslation();
   const formik = useFormik<{
     email: string;
     name: string;
@@ -41,12 +43,12 @@ const SignUpModal = (): React.ReactNode => {
 
   return (
     <Container>
-      <Title variant="h3">Welcome to Airdong</Title>
+      <Title variant="h3">{t("signup.form.title")}</Title>
       <FormContainer>
         <TextField
           variant="outlined"
           id="email"
-          label="Email"
+          label={t("signup.form.email")}
           color="secondary"
           onChange={handleChange}
           value={formik.values.email}
@@ -57,7 +59,7 @@ const SignUpModal = (): React.ReactNode => {
         <TextField
           variant="outlined"
           id="name"
-          label="Name"
+          label={t("signup.form.name")}
           color="secondary"
           onChange={handleChange}
           value={formik.values.name}
@@ -69,7 +71,7 @@ const SignUpModal = (): React.ReactNode => {
           variant="outlined"
           type="password"
           id="password"
-          label="Password"
+          label={t("signup.form.password")}
           color="secondary"
           onChange={handleChange}
           value={formik.values.password}
@@ -87,15 +89,15 @@ const SignUpModal = (): React.ReactNode => {
           fullWidth
           sx={{ marginBlockStart: "24px" }}
         >
-          Submit
+          {t("signup.form.cta")}
         </Button>
       </FormContainer>
       <ButtonContainer>
         <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<Google />}>
-          Continue with Google
+          {t("signup.form.cta.google")}
         </Button>
         <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<GitHub />}>
-          Continue with GitHub
+          {t("signup.form.cta.github")}
         </Button>
       </ButtonContainer>
     </Container>

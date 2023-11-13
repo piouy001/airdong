@@ -8,6 +8,7 @@ import { Logo as LogoIcon } from "assets/assetMap";
 
 const Logo = (): React.ReactNode => {
   const { palette } = useTheme();
+
   return (
     <Container>
       <LogoIcon color={palette.primary.main} />

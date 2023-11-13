@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import { Menu as MenuIcon, Face6 } from "@mui/icons-material";
 import { Avatar, Button, ClickAwayListener, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import SignUpModal from "components/auth/SignUpModal";
 import { useModal } from "contexts/ModalContext";
@@ -12,6 +13,7 @@ import Transitions from "styles/transitions";
 import { FontWeight } from "styles/typography";
 
 const Menu = (): React.ReactNode => {
+  const { t } = useTranslation();
   const { openModal } = useModal();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,17 +27,17 @@ const Menu = (): React.ReactNode => {
 
   const menuList = [
     {
-      label: "Sign Up",
+      label: t("header.menu.signup"),
       onClick: () => {
         openModal({
-          title: "Sign Up",
+          title: t("header.menu.signup"),
           content: <SignUpModal />,
         });
       },
       isAccent: true,
     },
     {
-      label: "Login",
+      label: t("header.menu.login"),
       onClick: () => {},
     },
   ];
@@ -43,7 +45,7 @@ const Menu = (): React.ReactNode => {
   return (
     <Container>
       <Banner color="secondary">
-        <BannerLabel variant="body2">Airdong your home</BannerLabel>
+        <BannerLabel variant="body2">{t("header.menu.yourhome")}</BannerLabel>
       </Banner>
       <MenuContainer>
         <ClickAwayListener onClickAway={handleClose}>

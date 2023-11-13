@@ -4,16 +4,19 @@ import styled from "@emotion/styled";
 import { SearchOutlined } from "@mui/icons-material";
 import { Avatar, Typography } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import BoxShadows from "styles/boxShadows";
 import Transitions from "styles/transitions";
 import { FontWeight } from "styles/typography";
 
 const Search = (): React.ReactNode => {
+  const { t } = useTranslation();
+
   const list = [
-    { label: "Anywhere", onClick: () => {}, isAccent: true },
-    { label: "Any Week", onClick: () => {}, isAccent: true },
-    { label: "Search", onClick: () => {}, hasIcon: true },
+    { label: t("header.search.anywhere"), onClick: () => {}, isAccent: true },
+    { label: t("header.search.anyweek"), onClick: () => {}, isAccent: true },
+    { label: t("header.search.guests"), onClick: () => {}, hasIcon: true },
   ];
 
   return (

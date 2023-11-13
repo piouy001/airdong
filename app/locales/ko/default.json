@@ -1,0 +1,23 @@
+{
+  "header.search.anywhere": "어디든지",
+  "header.search.anyweek": "언제든 일주일",
+  "header.search.guests": "게스트 추가",
+  "header.menu.yourhome": "당신의 공간을 에어동하세요",
+  "header.menu.signup": "회원가입",
+  "header.menu.login": "로그인",
+  "email.required.error": "이메일을 입력해주세요.",
+  "email.valid.error": "이메일이 올바르지 않습니다.",
+  "name.required.error": "이름을 입력해주세요.",
+  "name.min.error": "이름은 최소 2자 이상으로 설정가능합니다.",
+  "name.max.error": "이름은 최대 12자 까지 설정 가능합니다.",
+  "password.required.error": "패스워드를 입력해주세요.",
+  "password.min.error": "패스워드는 최소 2자 이상으로 설정가능합니다.",
+  "password.numbers.error": "패스워드에는 숫자가 포함되어야 합니다.",
+  "signup.form.title": "에어동에 오신 것을 환영합니다.",
+  "signup.form.email": "이메일",
+  "signup.form.name": "이름",
+  "signup.form.password": "비밀번호",
+  "signup.form.cta": "계속하기",
+  "signup.form.cta.google": "구글로 회원가입하기",
+  "signup.form.cta.github": "깃허브로 회원가입하기"
+}

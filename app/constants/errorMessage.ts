@@ -1,16 +1,18 @@
+import i18n from "i18n";
+
 export const getEmailErrorMessages = (): Record<string, string> => ({
-  "any.empty": "Email is required.",
-  "string.email": "Enter a valid email.",
+  "any.empty": i18n.t("email.required.error"),
+  "string.email": i18n.t("email.valid.error"),
 });
 
 export const getNameErrorMessages = (): Record<string, string> => ({
-  "any.empty": "Name is required.",
-  "string.min": "Name must be at least 2 characters",
-  "string.max": "Name must be at most 12 characters",
+  "any.empty": i18n.t("name.required.error"),
+  "string.min": i18n.t("name.min.error"),
+  "string.max": i18n.t("name.max.error"),
 });
 
 export const getPasswordErrorMessages = (): Record<string, string> => ({
-  "any.empty": "Password is required.",
-  "string.min": "Password must be at least 10 characters",
-  numbers: "Password must include numbers",
+  "any.empty": i18n.t("password.required.error"),
+  "string.min": i18n.t("password.min.error"),
+  numbers: i18n.t("password.numbers.error"),
 });
