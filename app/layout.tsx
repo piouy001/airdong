@@ -3,7 +3,7 @@ import React from "react";
 
 import I18nProvider from "I18nextProvider";
 import Header from "components/layout/Header/Header";
-import Modal from "components/layout/Modal";
+import Modal from "components/modal";
 import ThemeRegistry from "components/theme/ThemeRegistry";
 import RootContextProvider from "contexts";
 

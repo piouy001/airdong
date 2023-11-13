@@ -1,12 +1,13 @@
 "use client";
 
 import styled from "@emotion/styled";
-import { Menu as MenuIcon, Face6 } from "@mui/icons-material";
-import { Avatar, Button, ClickAwayListener, Typography } from "@mui/material";
+import { Menu as MenuIcon, Face6, Public } from "@mui/icons-material";
+import { Avatar, Button, ClickAwayListener, IconButton, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import SignUpModal from "components/auth/SignUpModal";
+import LanguageModal from "components/modal/LanguageModal";
+import SignUpModal from "components/modal/SignUpModal";
 import { useModal } from "contexts/ModalContext";
 import BoxShadows from "styles/boxShadows";
 import Transitions from "styles/transitions";
@@ -16,6 +17,12 @@ const Menu = (): React.ReactNode => {
   const { t } = useTranslation();
   const { openModal } = useModal();
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleLanguageClick = () => {
+    openModal({
+      content: <LanguageModal />,
+    });
+  };
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -30,7 +37,6 @@ const Menu = (): React.ReactNode => {
       label: t("header.menu.signup"),
       onClick: () => {
         openModal({
-          title: t("header.menu.signup"),
           content: <SignUpModal />,
         });
       },
@@ -45,8 +51,13 @@ const Menu = (): React.ReactNode => {
   return (
     <Container>
       <Banner color="secondary">
-        <BannerLabel variant="body2">{t("header.menu.yourhome")}</BannerLabel>
+        <BannerLabel variant="body2" sx={{ fontWeight: FontWeight.SemiBold }}>
+          {t("header.menu.yourhome")}
+        </BannerLabel>
       </Banner>
+      <LanguageButton sx={{ width: 40, height: 40 }} onClick={handleLanguageClick}>
+        <Public sx={{ width: 16, height: 16, color: "text.primary" }} />
+      </LanguageButton>
       <MenuContainer>
         <ClickAwayListener onClickAway={handleClose}>
           <MenuButton onClick={handleOpen} $isActive={isOpen}>
@@ -80,7 +91,6 @@ const Menu = (): React.ReactNode => {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
   flex: 1 0 140px;
   justify-content: flex-end;
 `;
@@ -89,6 +99,9 @@ const Banner = styled(Button)`
   border-radius: 48px;
 `;
 const BannerLabel = styled(Typography)``;
+const LanguageButton = styled(IconButton)`
+  margin-inline-end: 8px;
+`;
 const MenuContainer = styled.div`
   position: relative;
 `;

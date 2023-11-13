@@ -1,5 +1,3 @@
-"use client";
-
 import styled from "@emotion/styled";
 import { Close as CloseIcon } from "@mui/icons-material";
 import { Dialog, IconButton, Typography } from "@mui/material";
@@ -8,6 +6,13 @@ import { TransitionProps } from "@mui/material/transitions";
 import React from "react";
 
 import { useModal } from "contexts/ModalContext";
+
+interface Props {
+  title?: string;
+  maxWidth?: string;
+  withDivider?: boolean;
+  children: React.ReactNode;
+}
 
 // eslint-disable-next-line react/display-name
 const Transition = React.forwardRef(
@@ -19,7 +24,7 @@ const Transition = React.forwardRef(
   ) => <Slide direction="up" ref={ref} {...props} />,
 );
 
-const Modal = (): React.ReactNode => {
+const ModalLayout = ({ title, maxWidth, withDivider = true, children }: Props): React.ReactNode => {
   const { state: modal, closeModal } = useModal();
 
   const handleClose = () => {
@@ -29,26 +34,35 @@ const Modal = (): React.ReactNode => {
   };
 
   return (
-    <Wrapper open={modal.open} keepMounted TransitionComponent={Transition} onClose={handleClose}>
-      <Container>
-        <Header>
-          <CloseButton color="secondary" onClick={handleClose}>
-            <CloseIcon />
-          </CloseButton>
-          <Title variant="h6">{modal.title}</Title>
-        </Header>
-        <Content>{modal.content}</Content>
-      </Container>
-    </Wrapper>
+    <Dialog
+      open={modal.open}
+      keepMounted
+      TransitionComponent={Transition}
+      onClose={handleClose}
+      PaperProps={{
+        sx: {
+          maxWidth: maxWidth ?? "auto",
+          width: "100%",
+          borderRadius: "12px",
+        },
+      }}
+    >
+      <Header>
+        <CloseButton color="secondary" onClick={handleClose}>
+          <CloseIcon />
+        </CloseButton>
+        {!!title && <Title variant="h6">{title}</Title>}
+      </Header>
+      {withDivider && <Divider />}
+      <Content>{children}</Content>
+    </Dialog>
   );
 };
-const Wrapper = styled(Dialog)`
-  & .MuiPaper-root {
-    border-radius: 12px;
-    width: 100%;
-  }
+const Divider = styled.div`
+  width: 100%;
+  height: 1px;
+  background: ${({ theme }) => theme.palette.divider};
 `;
-const Container = styled.div``;
 const Header = styled.div`
   display: flex;
   justify-content: center;
@@ -56,7 +70,6 @@ const Header = styled.div`
   flex-direction: row;
   height: 64px;
   padding-inline: 24px;
-  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 const CloseButton = styled(IconButton)`
   position: absolute;
@@ -70,4 +83,4 @@ const Content = styled.div`
   padding: 24px;
 `;
 
-export default Modal;
+export default ModalLayout;
