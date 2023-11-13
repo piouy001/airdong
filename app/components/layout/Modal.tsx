@@ -32,10 +32,10 @@ const Modal = (): React.ReactNode => {
     <Wrapper open={modal.open} keepMounted TransitionComponent={Transition} onClose={handleClose}>
       <Container>
         <Header>
-          <CloseButton color="secondary">
+          <CloseButton color="secondary" onClick={handleClose}>
             <CloseIcon />
           </CloseButton>
-          <Title variant="h6">Title</Title>
+          <Title variant="h6">{modal.title}</Title>
         </Header>
         <Content>{modal.content}</Content>
       </Container>
@@ -56,6 +56,7 @@ const Header = styled.div`
   flex-direction: row;
   height: 64px;
   padding-inline: 24px;
+  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 const CloseButton = styled(IconButton)`
   position: absolute;
