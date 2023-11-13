@@ -14,6 +14,7 @@ const Menu = (): React.ReactNode => {
 
   const handleMenuClick = () => {
     openModal({
+      title: "Title",
       content: (
         <div>
           <div>Modal</div>

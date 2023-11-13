@@ -4,6 +4,7 @@ import { produce } from "immer";
 import React, { Dispatch, ReactNode, useCallback, useContext, useReducer } from "react";
 
 interface ModalProps {
+  title: string | null;
   content: ReactNode | null;
   handleClose?: () => void;
 }
@@ -25,10 +26,12 @@ const modalReducer = produce((draft: ModalState, action: Action) => {
     case "openModal":
       draft.open = true;
       draft.content = action.content;
+      draft.title = action.title;
       draft.handleClose = action.handleClose;
       break;
     case "closeModal":
       draft.open = false;
+      draft.title = null;
       draft.content = null;
       break;
     default:
@@ -38,6 +41,7 @@ const modalReducer = produce((draft: ModalState, action: Action) => {
 export const ModalContextProvider = ({ children }: { children?: React.ReactNode }) => {
   const [state, dispatch] = useReducer(modalReducer, {
     open: false,
+    title: null,
     content: null,
     handleClose: undefined,
   });
