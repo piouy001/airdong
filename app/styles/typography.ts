@@ -1,61 +1,67 @@
-import { Roboto } from "next/font/google";
+import { Outfit } from "next/font/google";
 
-const roboto = Roboto({
-  weight: ["400", "500", "700"],
+const notoSans = Outfit({
+  weight: ["400", "600", "700"],
   subsets: ["latin"],
   display: "swap",
 });
 
+export const FontWeight = {
+  Regular: 400,
+  SemiBold: 600,
+  Bold: 700,
+} as const;
+
 const typography = {
-  fontFamily: roboto.style.fontFamily,
+  fontFamily: notoSans.style.fontFamily,
   h1: {
-    fontWeight: 600,
+    fontWeight: FontWeight.SemiBold,
     fontSize: "32px",
     lineHeight: "44px",
   },
   h2: {
-    fontWeight: 600,
+    fontWeight: FontWeight.SemiBold,
     fontSize: "28px",
     lineHeight: "40px",
   },
   h3: {
-    fontWeight: 600,
+    fontWeight: FontWeight.SemiBold,
     fontSize: "24px",
     lineHeight: "32px",
   },
   h4: {
-    fontWeight: 600,
+    fontWeight: FontWeight.SemiBold,
     fontSize: "20px",
     lineHeight: "28px",
   },
   h5: {
-    fontWeight: 600,
+    fontWeight: FontWeight.SemiBold,
     fontSize: "18px",
     lineHeight: "26px",
   },
   h6: {
-    fontWeight: 600,
+    fontWeight: FontWeight.SemiBold,
     fontSize: "16px",
     lineHeight: "24px",
   },
 
   body1: {
-    fontWeight: 400,
+    fontWeight: FontWeight.Regular,
     fontSize: "16px",
     lineHeight: "24px",
   },
   body2: {
-    fontWeight: 400,
+    fontWeight: FontWeight.Regular,
     fontSize: "14px",
     lineHeight: "20px",
   },
   subtitle1: {
-    fontWeight: 400,
+    fontWeight: FontWeight.Regular,
     fontSize: "12px",
     lineHeight: "18px",
   },
   subtitle2: {
-    fontWeight: 400,
+    fontWeight: FontWeight.Regular,
     fontSize: "11px",
     lineHeight: "16px",
   },
