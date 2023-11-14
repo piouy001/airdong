@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { Menu as MenuIcon, Face6, Public } from "@mui/icons-material";
 import { Avatar, Button, ClickAwayListener, IconButton, Typography } from "@mui/material";
+import { User } from "@prisma/client";
+import { signOut } from "next-auth/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -13,7 +15,11 @@ import { Devices } from "styles/breakpoints";
 import Transitions from "styles/transitions";
 import { FontWeight } from "styles/typography";
 
-const Menu = (): React.ReactNode => {
+interface Props {
+  user: User | null;
+}
+
+const Menu = ({ user }: Props): React.ReactNode => {
   const { t } = useTranslation();
   const { openModal } = useModal();
   const [isOpen, setIsOpen] = useState(false);
@@ -32,25 +38,46 @@ const Menu = (): React.ReactNode => {
     setIsOpen(false);
   };
 
-  const menuList = [
-    {
-      label: t("header.menu.signup"),
-      onClick: () => {
-        openModal({
-          content: <SignUpModal />,
-        });
-      },
-      isAccent: true,
-    },
-    {
-      label: t("header.menu.login"),
-      onClick: () => {
-        openModal({
-          content: <LoginModal />,
-        });
-      },
-    },
-  ];
+  const menuList: {
+    label: string;
+    onClick: () => void;
+    isAccent?: boolean;
+    hasDivider?: boolean;
+  }[] = user
+    ? [
+        { label: t("header.menu.trips"), onClick: () => {}, isAccent: true },
+        { label: t("header.menu.wishlists"), onClick: () => {}, isAccent: true },
+        { label: t("header.menu.reservations"), onClick: () => {}, isAccent: true },
+        { label: t("header.menu.properties"), onClick: () => {}, isAccent: true },
+        { label: t("header.menu.myhome"), onClick: () => {}, isAccent: true },
+        {
+          label: t("header.menu.logout"),
+          onClick: () => {
+            signOut();
+          },
+          isAccent: true,
+          hasDivider: true,
+        },
+      ]
+    : [
+        {
+          label: t("header.menu.signup"),
+          onClick: () => {
+            openModal({
+              content: <SignUpModal />,
+            });
+          },
+          isAccent: true,
+        },
+        {
+          label: t("header.menu.login"),
+          onClick: () => {
+            openModal({
+              content: <LoginModal />,
+            });
+          },
+        },
+      ];
 
   return (
     <Container>
@@ -74,15 +101,18 @@ const Menu = (): React.ReactNode => {
         {isOpen && (
           <MenuList>
             {menuList.map(item => (
-              <MenuItem
-                key={item.label}
-                variant="body2"
-                onClick={item.onClick}
-                fontWeight={item.isAccent ? FontWeight.SemiBold : FontWeight.Regular}
-                color={item.isAccent ? "text.primary" : "text.secondary"}
-              >
-                {item.label}
-              </MenuItem>
+              <>
+                {item.hasDivider && <Divider />}
+                <MenuItem
+                  key={item.label}
+                  variant="body2"
+                  onClick={item.onClick}
+                  fontWeight={item.isAccent ? FontWeight.SemiBold : FontWeight.Regular}
+                  color={item.isAccent ? "text.primary" : "text.secondary"}
+                >
+                  {item.label}
+                </MenuItem>
+              </>
             ))}
           </MenuList>
         )}
@@ -161,6 +191,12 @@ const MenuAvatar = styled(Avatar)`
   @media ${Devices.Desktop} {
     display: flex;
   }
+`;
+const Divider = styled.div`
+  width: 100%;
+  height: 1px;
+  margin-block: 8px;
+  background: ${({ theme }) => theme.palette.divider};
 `;
 
 export default Menu;

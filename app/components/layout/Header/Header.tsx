@@ -18,7 +18,7 @@ const Header = ({ user }: Props): React.ReactNode => (
   <Container>
     <Logo />
     <Search />
-    <Menu />
+    <Menu user={user} />
   </Container>
 );
 
