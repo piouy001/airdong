@@ -8,8 +8,11 @@ import * as yup from "yup";
 
 import ModalLayout from "components/modal/ModalLayout";
 import { getEmailErrorMessages, getNameErrorMessages, getPasswordErrorMessages } from "constants/errorMessage";
+import { useModal } from "contexts/ModalContext";
 import { FontWeight } from "styles/typography";
 import { emailSchema, nameSchema, passwordSchema } from "utils/validationSchema";
+
+import LoginModal from "./LoginModal";
 
 const signUpFormSchema = yup.object({
   email: emailSchema,
@@ -19,6 +22,7 @@ const signUpFormSchema = yup.object({
 
 const SignUpModal = (): React.ReactNode => {
   const { t } = useTranslation();
+  const { closeModal, openModal } = useModal();
   const formik = useFormik<{
     email: string;
     name: string;
@@ -33,6 +37,14 @@ const SignUpModal = (): React.ReactNode => {
     validateOnMount: true,
     onSubmit: () => {},
   });
+
+  const navigateToLoginScreen = () => {
+    closeModal();
+
+    openModal({
+      content: <LoginModal />,
+    });
+  };
 
   const handleSubmit = () => {
     formik.handleSubmit();
@@ -110,7 +122,12 @@ const SignUpModal = (): React.ReactNode => {
           <Text variant="body2" color="text.secondary">
             {t("signup.form.hasaccount")}
           </Text>
-          <AccentText variant="body2" color="text.primary" fontWeight={FontWeight.SemiBold}>
+          <AccentText
+            variant="body2"
+            color="text.primary"
+            fontWeight={FontWeight.SemiBold}
+            onClick={navigateToLoginScreen}
+          >
             {t("signup.form.login")}
           </AccentText>
         </TextContainer>
