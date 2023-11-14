@@ -26,10 +26,8 @@ const Search = (): React.ReactNode => {
         <Item key={item.label} $isEnd={index === list.length - 1}>
           <Label
             variant="body2"
-            sx={{
-              fontWeight: item.isAccent ? FontWeight.Bold : FontWeight.Regular,
-              color: item.isAccent ? "text.primary" : "text.secondary",
-            }}
+            fontWeight={item.isAccent ? FontWeight.Bold : FontWeight.Regular}
+            color={item.isAccent ? "text.primary" : "text.secondary"}
           >
             {item.label}
           </Label>
@@ -43,20 +41,10 @@ const Search = (): React.ReactNode => {
       <MobileItem>
         <SearchOutlined sx={{ width: 28, height: 28 }} />
         <MobileLabels>
-          <MobileLabel
-            variant="body2"
-            sx={{
-              fontWeight: FontWeight.SemiBold,
-            }}
-          >
+          <MobileLabel variant="body2" fontWeight={FontWeight.SemiBold}>
             {t("header.search.anywhere")}
           </MobileLabel>
-          <MobileLabel
-            variant="subtitle1"
-            sx={{
-              color: "text.secondary",
-            }}
-          >
+          <MobileLabel variant="subtitle1" color="text.secondary">
             {t("header.search.anyweek")} • {t("header.search.guests")}
           </MobileLabel>
         </MobileLabels>

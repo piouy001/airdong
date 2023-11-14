@@ -22,5 +22,7 @@
   "signup.form.password": "Password",
   "signup.form.cta": "Continue",
   "signup.form.cta.google": "Continue with Google",
-  "signup.form.cta.github": "Continue width Github"
+  "signup.form.cta.github": "Continue width Github",
+  "signup.form.hasaccount": "Already have an account?",
+  "signup.form.login": "Login"
 }

@@ -35,10 +35,10 @@ const LanguageModal = (): React.ReactNode => {
               handleClick(item.value);
             }}
           >
-            <Label variant="body2" sx={{ color: "text.primary" }}>
+            <Label variant="body2" color="text.primary">
               {item.label}
             </Label>
-            <Label variant="body2" sx={{ color: "text.secondary" }}>
+            <Label variant="body2" color="text.secondary">
               {item.country}
             </Label>
           </Item>

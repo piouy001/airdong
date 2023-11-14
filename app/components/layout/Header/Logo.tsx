@@ -11,7 +11,7 @@ const Logo = (): React.ReactNode => {
   return (
     <Container>
       <LogoIcon color={palette.primary.main} />
-      <LogoLabel variant="h3" sx={{ color: "primary.main" }}>
+      <LogoLabel variant="h3" color="primary.main">
         airdong
       </LogoLabel>
     </Container>

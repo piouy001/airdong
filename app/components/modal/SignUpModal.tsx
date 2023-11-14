@@ -8,6 +8,7 @@ import * as yup from "yup";
 
 import ModalLayout from "components/modal/ModalLayout";
 import { getEmailErrorMessages, getNameErrorMessages, getPasswordErrorMessages } from "constants/errorMessage";
+import { FontWeight } from "styles/typography";
 import { emailSchema, nameSchema, passwordSchema } from "utils/validationSchema";
 
 const signUpFormSchema = yup.object({
@@ -105,6 +106,14 @@ const SignUpModal = (): React.ReactNode => {
             {t("signup.form.cta.github")}
           </Button>
         </ButtonContainer>
+        <TextContainer>
+          <Text variant="body2" color="text.secondary">
+            {t("signup.form.hasaccount")}
+          </Text>
+          <AccentText variant="body2" color="text.primary" fontWeight={FontWeight.SemiBold}>
+            {t("signup.form.login")}
+          </AccentText>
+        </TextContainer>
       </Container>
     </ModalLayout>
   );
@@ -136,5 +145,14 @@ const Divider = styled.div`
   height: 1px;
   margin-block: 16px;
   background: ${({ theme }) => theme.palette.divider};
+`;
+const TextContainer = styled.div`
+  margin-block-start: 12px;
+  text-align: center;
+`;
+const Text = styled(Typography)``;
+const AccentText = styled(Text)`
+  margin-inline-start: 8px;
+  cursor: pointer;
 `;
 export default SignUpModal;

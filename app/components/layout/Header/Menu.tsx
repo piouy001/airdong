@@ -50,7 +50,7 @@ const Menu = (): React.ReactNode => {
   return (
     <Container>
       <Banner color="secondary">
-        <BannerLabel variant="body2" sx={{ fontWeight: FontWeight.SemiBold }}>
+        <BannerLabel variant="body2" fontWeight={FontWeight.SemiBold}>
           {t("header.menu.yourhome")}
         </BannerLabel>
       </Banner>
@@ -73,10 +73,8 @@ const Menu = (): React.ReactNode => {
                 key={item.label}
                 variant="body2"
                 onClick={item.onClick}
-                sx={{
-                  fontWeight: item.isAccent ? FontWeight.SemiBold : FontWeight.Regular,
-                  color: item.isAccent ? "text.primary" : "text.secondary",
-                }}
+                fontWeight={item.isAccent ? FontWeight.SemiBold : FontWeight.Regular}
+                color={item.isAccent ? "text.primary" : "text.secondary"}
               >
                 {item.label}
               </MenuItem>
