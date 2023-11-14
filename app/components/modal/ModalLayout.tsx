@@ -45,7 +45,7 @@ const ModalLayout = ({ title, maxWidth, withDivider = true, children }: Props): 
       onClose={handleClose}
       PaperProps={{
         sx: {
-          maxWidth: maxWidth ?? "unset",
+          maxWidth: maxWidth ?? isMobile ? "unset" : "600px",
           height: isMobile ? "100%" : "auto",
           width: "100%",
           borderRadius: "12px",
