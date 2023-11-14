@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Google, GitHub } from "@mui/icons-material";
+import { LoadingButton } from "@mui/lab";
 import { Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
@@ -9,6 +10,7 @@ import * as yup from "yup";
 import ModalLayout from "components/modal/ModalLayout";
 import { getEmailErrorMessages, getNameErrorMessages, getPasswordErrorMessages } from "constants/errorMessage";
 import { useModal } from "contexts/ModalContext";
+import useSignUpMutate from "queries/auth/useSignUpMutate";
 import { FontWeight } from "styles/typography";
 import { emailSchema, nameSchema, passwordSchema } from "utils/validationSchema";
 
@@ -22,6 +24,7 @@ const signUpFormSchema = yup.object({
 
 const SignUpModal = (): React.ReactNode => {
   const { t } = useTranslation();
+  const mutate = useSignUpMutate();
   const { closeModal, openModal } = useModal();
   const formik = useFormik<{
     email: string;
@@ -35,7 +38,9 @@ const SignUpModal = (): React.ReactNode => {
     },
     validationSchema: signUpFormSchema,
     validateOnMount: true,
-    onSubmit: () => {},
+    onSubmit: data => {
+      mutate.trigger(data);
+    },
   });
 
   const navigateToLoginScreen = () => {
@@ -100,7 +105,8 @@ const SignUpModal = (): React.ReactNode => {
           </FormContainer>
         </Content>
         <ButtonContainer>
-          <Button
+          <LoadingButton
+            loading={mutate.isMutating}
             variant="contained"
             size="large"
             disabled={!formik.isValid}
@@ -109,7 +115,7 @@ const SignUpModal = (): React.ReactNode => {
             sx={{ marginBlockStart: "32px" }}
           >
             {t("signup.form.cta")}
-          </Button>
+          </LoadingButton>
           <Divider />
           <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<Google />}>
             {t("signup.form.cta.google")}
