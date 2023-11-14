@@ -31,6 +31,8 @@
     "react/require-default-props": "off",
     "no-param-reassign": "off",
     "react/jsx-props-no-spreading": "off",
+    "no-undef": "off",
+    "import/no-mutable-exports": "off",
     "import/no-extraneous-dependencies": "off",
     "import/no-unresolved": "off",
     "import/order": [
