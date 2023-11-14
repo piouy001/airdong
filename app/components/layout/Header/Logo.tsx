@@ -1,10 +1,9 @@
-"use client";
-
 import styled from "@emotion/styled";
 import { Typography, useTheme } from "@mui/material";
 import React from "react";
 
 import { Logo as LogoIcon } from "assets/assetMap";
+import { Devices } from "styles/breakpoints";
 
 const Logo = (): React.ReactNode => {
   const { palette } = useTheme();
@@ -20,9 +19,12 @@ const Logo = (): React.ReactNode => {
 };
 
 const Container = styled.div`
-  display: flex;
-  align-items: center;
-  flex: 1 0 140px;
+  display: none;
+
+  @media ${Devices.Desktop} {
+    display: flex;
+    align-items: center;
+  }
 `;
 const LogoLabel = styled(Typography)`
   margin-left: 5px;

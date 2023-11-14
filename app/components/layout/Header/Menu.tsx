@@ -1,5 +1,3 @@
-"use client";
-
 import styled from "@emotion/styled";
 import { Menu as MenuIcon, Face6, Public } from "@mui/icons-material";
 import { Avatar, Button, ClickAwayListener, IconButton, Typography } from "@mui/material";
@@ -10,6 +8,7 @@ import LanguageModal from "components/modal/LanguageModal";
 import SignUpModal from "components/modal/SignUpModal";
 import { useModal } from "contexts/ModalContext";
 import BoxShadows from "styles/boxShadows";
+import { Devices } from "styles/breakpoints";
 import Transitions from "styles/transitions";
 import { FontWeight } from "styles/typography";
 
@@ -24,8 +23,8 @@ const Menu = (): React.ReactNode => {
     });
   };
 
-  const handleOpen = () => {
-    setIsOpen(true);
+  const handleToggle = () => {
+    setIsOpen(prev => !prev);
   };
 
   const handleClose = () => {
@@ -60,11 +59,11 @@ const Menu = (): React.ReactNode => {
       </LanguageButton>
       <MenuContainer>
         <ClickAwayListener onClickAway={handleClose}>
-          <MenuButton onClick={handleOpen} $isActive={isOpen}>
+          <MenuButton onClick={handleToggle} $isActive={isOpen}>
             <MenuIcon sx={{ width: 20, height: 20 }} />
-            <Avatar sx={{ width: 32, height: 32, bgcolor: "text.secondary" }}>
+            <MenuAvatar sx={{ width: 32, height: 32, bgcolor: "text.secondary" }}>
               <Face6 sx={{ width: 28, height: 28 }} />
-            </Avatar>
+            </MenuAvatar>
           </MenuButton>
         </ClickAwayListener>
         {isOpen && (
@@ -91,16 +90,24 @@ const Menu = (): React.ReactNode => {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  flex: 1 0 140px;
-  justify-content: flex-end;
 `;
 const Banner = styled(Button)`
+  display: none;
   padding: 12px;
   border-radius: 48px;
+
+  @media ${Devices.Desktop} {
+    display: block;
+  }
 `;
 const BannerLabel = styled(Typography)``;
 const LanguageButton = styled(IconButton)`
+  display: none;
   margin-inline-end: 8px;
+
+  @media ${Devices.Desktop} {
+    display: block;
+  }
 `;
 const MenuContainer = styled.div`
   position: relative;
@@ -110,13 +117,16 @@ const MenuButton = styled.div<{ $isActive: boolean }>`
   align-items: center;
   gap: 12px;
   height: 48px;
-  padding: 8px 8px 8px 14px;
+  padding-inline: 14px;
   border-radius: 48px;
   border: 1px solid ${({ theme }) => theme.palette.divider};
   box-shadow: ${({ $isActive }) => $isActive && BoxShadows.PrimaryHover};
   transition: box-shadow ${Transitions.Primary};
   cursor: pointer;
 
+  @media ${Devices.Desktop} {
+    padding: 8px 8px 8px 14px;
+  }
   &:hover {
     box-shadow: ${BoxShadows.PrimaryHover};
   }
@@ -141,6 +151,12 @@ const MenuItem = styled(Typography)`
   padding-inline: 16px;
   &:hover {
     background: ${({ theme }) => theme.palette.grey[100]};
+  }
+`;
+const MenuAvatar = styled(Avatar)`
+  display: none;
+  @media ${Devices.Desktop} {
+    display: flex;
   }
 `;
 

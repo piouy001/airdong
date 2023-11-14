@@ -6,6 +6,19 @@ declare module "@emotion/react" {
   interface Theme extends ExtendedTheme {}
 }
 
+declare module "@mui/material/styles" {
+  interface BreakpointOverrides {
+    xs: false;
+    sm: false;
+    md: false;
+    lg: false;
+    xl: false;
+    mobile: true;
+    tablet: true;
+    desktop: true;
+  }
+}
+
 declare module "*.svg" {
   import React from "react";
 

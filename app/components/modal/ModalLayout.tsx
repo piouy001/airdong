@@ -1,6 +1,7 @@
+import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Close as CloseIcon } from "@mui/icons-material";
-import { Dialog, IconButton, Typography } from "@mui/material";
+import { Dialog, IconButton, Typography, useMediaQuery } from "@mui/material";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import React from "react";
@@ -26,6 +27,8 @@ const Transition = React.forwardRef(
 
 const ModalLayout = ({ title, maxWidth, withDivider = true, children }: Props): React.ReactNode => {
   const { state: modal, closeModal } = useModal();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("desktop"));
 
   const handleClose = () => {
     closeModal();
@@ -37,11 +40,13 @@ const ModalLayout = ({ title, maxWidth, withDivider = true, children }: Props): 
     <Dialog
       open={modal.open}
       keepMounted
+      fullScreen={isMobile}
       TransitionComponent={Transition}
       onClose={handleClose}
       PaperProps={{
         sx: {
-          maxWidth: maxWidth ?? "auto",
+          maxWidth: maxWidth ?? "unset",
+          height: isMobile ? "100%" : "auto",
           width: "100%",
           borderRadius: "12px",
         },
@@ -68,7 +73,8 @@ const Header = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  height: 64px;
+  min-height: 64px;
+  max-height: 64px;
   padding-inline: 24px;
 `;
 const CloseButton = styled(IconButton)`
@@ -81,6 +87,7 @@ const CloseButton = styled(IconButton)`
 const Title = styled(Typography)``;
 const Content = styled.div`
   padding: 24px;
+  height: 100%;
 `;
 
 export default ModalLayout;

@@ -69,9 +69,6 @@ const typography = {
     fontSize: "11px",
     lineHeight: "16px",
   },
-  button: {
-    textTransform: "none",
-  },
 };
 
 export default typography;

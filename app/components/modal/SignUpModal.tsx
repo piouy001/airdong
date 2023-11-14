@@ -45,56 +45,59 @@ const SignUpModal = (): React.ReactNode => {
   return (
     <ModalLayout title={t("header.menu.signup")}>
       <Container>
-        <Title variant="h3">{t("signup.form.title")}</Title>
-        <FormContainer>
-          <TextField
-            variant="outlined"
-            id="email"
-            label={t("signup.form.email")}
-            color="secondary"
-            onChange={handleChange}
-            value={formik.values.email}
-            error={!!formik.errors.email && !!formik.touched.email}
-            helperText={formik.errors.email && formik.touched.email && getEmailErrorMessages()[formik.errors.email]}
-            fullWidth
-          />
-          <TextField
-            variant="outlined"
-            id="name"
-            label={t("signup.form.name")}
-            color="secondary"
-            onChange={handleChange}
-            value={formik.values.name}
-            error={!!formik.errors.name && !!formik.touched.name}
-            helperText={formik.errors.name && formik.touched.name && getNameErrorMessages()[formik.errors.name]}
-            fullWidth
-          />
-          <TextField
-            variant="outlined"
-            type="password"
-            id="password"
-            label={t("signup.form.password")}
-            color="secondary"
-            onChange={handleChange}
-            value={formik.values.password}
-            error={!!formik.errors.password && !!formik.touched.password}
-            helperText={
-              formik.errors.password && formik.touched.password && getPasswordErrorMessages()[formik.errors.password]
-            }
-            fullWidth
-          />
+        <Content>
+          <Title variant="h3">{t("signup.form.title")}</Title>
+          <FormContainer>
+            <TextField
+              variant="outlined"
+              id="email"
+              label={t("signup.form.email")}
+              color="secondary"
+              onChange={handleChange}
+              value={formik.values.email}
+              error={!!formik.errors.email && !!formik.touched.email}
+              helperText={formik.errors.email && formik.touched.email && getEmailErrorMessages()[formik.errors.email]}
+              fullWidth
+            />
+            <TextField
+              variant="outlined"
+              id="name"
+              label={t("signup.form.name")}
+              color="secondary"
+              onChange={handleChange}
+              value={formik.values.name}
+              error={!!formik.errors.name && !!formik.touched.name}
+              helperText={formik.errors.name && formik.touched.name && getNameErrorMessages()[formik.errors.name]}
+              fullWidth
+            />
+            <TextField
+              variant="outlined"
+              type="password"
+              id="password"
+              label={t("signup.form.password")}
+              color="secondary"
+              onChange={handleChange}
+              value={formik.values.password}
+              error={!!formik.errors.password && !!formik.touched.password}
+              helperText={
+                formik.errors.password && formik.touched.password && getPasswordErrorMessages()[formik.errors.password]
+              }
+              fullWidth
+            />
+          </FormContainer>
+        </Content>
+        <ButtonContainer>
           <Button
             variant="contained"
             size="large"
             disabled={!formik.isValid}
             onClick={handleSubmit}
             fullWidth
-            sx={{ marginBlockStart: "24px" }}
+            sx={{ marginBlockStart: "32px" }}
           >
             {t("signup.form.cta")}
           </Button>
-        </FormContainer>
-        <ButtonContainer>
+          <Divider />
           <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<Google />}>
             {t("signup.form.cta.google")}
           </Button>
@@ -107,7 +110,14 @@ const SignUpModal = (): React.ReactNode => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+const Content = styled.div`
+  flex: 1 1 auto;
+`;
 const Title = styled(Typography)`
   margin-block-end: 24px;
 `;
@@ -120,8 +130,11 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-block-start: 24px;
-  padding-block-start: 24px;
-  border-top: 1px solid ${({ theme }) => theme.palette.divider};
+`;
+const Divider = styled.div`
+  width: 100%;
+  height: 1px;
+  margin-block: 16px;
+  background: ${({ theme }) => theme.palette.divider};
 `;
 export default SignUpModal;

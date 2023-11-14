@@ -1,5 +1,3 @@
-"use client";
-
 import styled from "@emotion/styled";
 import { SearchOutlined } from "@mui/icons-material";
 import { Avatar, Typography } from "@mui/material";
@@ -7,6 +5,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 import BoxShadows from "styles/boxShadows";
+import { Devices } from "styles/breakpoints";
 import Transitions from "styles/transitions";
 import { FontWeight } from "styles/typography";
 
@@ -14,13 +13,15 @@ const Search = (): React.ReactNode => {
   const { t } = useTranslation();
 
   const list = [
-    { label: t("header.search.anywhere"), onClick: () => {}, isAccent: true },
-    { label: t("header.search.anyweek"), onClick: () => {}, isAccent: true },
-    { label: t("header.search.guests"), onClick: () => {}, hasIcon: true },
+    { label: t("header.search.anywhere"), isAccent: true },
+    { label: t("header.search.anyweek"), isAccent: true },
+    { label: t("header.search.guests"), hasIcon: true },
   ];
 
+  const handleClick = () => {};
+
   return (
-    <Container>
+    <Container onClick={handleClick}>
       {list.map((item, index) => (
         <Item key={item.label} $isEnd={index === list.length - 1}>
           <Label
@@ -39,6 +40,27 @@ const Search = (): React.ReactNode => {
           )}
         </Item>
       ))}
+      <MobileItem>
+        <SearchOutlined sx={{ width: 28, height: 28 }} />
+        <MobileLabels>
+          <MobileLabel
+            variant="body2"
+            sx={{
+              fontWeight: FontWeight.SemiBold,
+            }}
+          >
+            {t("header.search.anywhere")}
+          </MobileLabel>
+          <MobileLabel
+            variant="subtitle1"
+            sx={{
+              color: "text.secondary",
+            }}
+          >
+            {t("header.search.anyweek")} • {t("header.search.guests")}
+          </MobileLabel>
+        </MobileLabels>
+      </MobileItem>
     </Container>
   );
 };
@@ -46,21 +68,30 @@ const Search = (): React.ReactNode => {
 const Container = styled.div`
   display: flex;
   align-items: center;
+  margin-right: 12px;
+  width: 100%;
   height: 48px;
   padding-inline: 8px;
   border-radius: 48px;
   border: 1px solid ${({ theme }) => theme.palette.divider};
   box-shadow: ${BoxShadows.Primary};
   transition: box-shadow ${Transitions.Primary};
+  cursor: pointer;
+
   &:hover {
     box-shadow: ${BoxShadows.PrimaryHover};
   }
+  @media ${Devices.Desktop} {
+    width: auto;
+  }
 `;
 const Item = styled.div<{ $isEnd: boolean }>`
-  position: relative;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+  display: none;
+  @media ${Devices.Desktop} {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
 
   &::after {
     content: "";
@@ -77,5 +108,19 @@ const Label = styled(Typography)`
   padding-inline: 16px;
 `;
 const Icon = styled(Avatar)``;
+const MobileItem = styled.div`
+  display: flex;
+  align-items: center;
+  padding-inline-start: 8px;
+  @media ${Devices.Desktop} {
+    display: none;
+  }
+`;
+const MobileLabels = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+`;
+const MobileLabel = styled(Typography)``;
 
 export default Search;

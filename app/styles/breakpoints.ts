@@ -13,3 +13,11 @@ export const Devices = {
   Tablet: `(min-width: ${Sizes.Mobile}px) and (max-width: ${Sizes.Desktop}px)`,
   Desktop: `(min-width: ${Sizes.Desktop}px)`,
 } as const;
+
+export const breakpoints = {
+  values: {
+    mobile: 0,
+    tablet: Sizes.Mobile,
+    desktop: Sizes.Desktop,
+  },
+};
