@@ -4,7 +4,7 @@ import { Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 
@@ -35,6 +35,7 @@ const LoginModal = (): React.ReactNode => {
   const { t } = useTranslation();
   const { closeModal, openModal } = useModal();
   const { openSnackbar } = useSnackbar();
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const formik = useFormik<{
     email: string;
@@ -47,26 +48,28 @@ const LoginModal = (): React.ReactNode => {
     validationSchema: signUpFormSchema,
     validateOnMount: true,
     onSubmit: data => {
+      setIsLoading(true);
       signIn("credentials", {
         ...data,
         redirect: false,
-      })
-        .then(async callback => {
-          if (callback?.ok) {
-            openSnackbar({
-              snackbarType: "success",
-              text: t("login.success.text"),
-            });
-            router.refresh();
-            closeModal();
-          }
-        })
-        .catch(() => {
+      }).then(async callback => {
+        if (callback?.ok) {
           openSnackbar({
             snackbarType: "success",
+            text: t("login.success.text"),
+          });
+          router.refresh();
+          closeModal();
+        }
+        if (callback?.error) {
+          openSnackbar({
+            snackbarType: "error",
             text: t("login.error.text"),
           });
-        });
+        }
+
+        setIsLoading(false);
+      });
     },
   });
 
@@ -122,7 +125,7 @@ const LoginModal = (): React.ReactNode => {
         </Content>
         <ButtonContainer>
           <LoadingButton
-            // loading={mutate.isMutating}
+            loading={isLoading}
             variant="contained"
             size="large"
             disabled={!formik.isValid}
