@@ -6,6 +6,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 import { LANGUAGE_STORAGE_KEY } from "constants/language";
+import { useModal } from "contexts/ModalContext";
 import i18n from "i18n";
 import { Devices } from "styles/breakpoints";
 
@@ -13,6 +14,7 @@ import ModalLayout from "./ModalLayout";
 
 const LanguageModal = (): React.ReactNode => {
   const { t } = useTranslation();
+  const { closeModal } = useModal();
 
   const languages = [
     { label: "English", country: "United States", value: "en" },
@@ -22,6 +24,8 @@ const LanguageModal = (): React.ReactNode => {
   const handleClick = (value: string) => {
     localStorage.setItem(LANGUAGE_STORAGE_KEY, value);
     i18n.changeLanguage(value);
+
+    closeModal();
   };
 
   return (
