@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 
 import I18nProvider from "I18nextProvider";
+import Snackbar from "components/Snackbar";
 import Header from "components/layout/Header/Header";
 import Modal from "components/modal";
 import ThemeRegistry from "components/theme/ThemeRegistry";
@@ -23,6 +24,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
             <Header />
             {children}
             <Modal />
+            <Snackbar />
           </RootContextProvider>
         </ThemeRegistry>
       </I18nProvider>

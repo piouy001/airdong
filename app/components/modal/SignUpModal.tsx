@@ -10,6 +10,7 @@ import * as yup from "yup";
 import ModalLayout from "components/modal/ModalLayout";
 import { getEmailErrorMessages, getNameErrorMessages, getPasswordErrorMessages } from "constants/errorMessage";
 import { useModal } from "contexts/ModalContext";
+import { useSnackbar } from "contexts/SnackbarContext";
 import useSignUpMutate from "queries/auth/useSignUpMutate";
 import { FontWeight } from "styles/typography";
 import { emailSchema, nameSchema, passwordSchema } from "utils/validationSchema";
@@ -26,6 +27,7 @@ const SignUpModal = (): React.ReactNode => {
   const { t } = useTranslation();
   const mutate = useSignUpMutate();
   const { closeModal, openModal } = useModal();
+  const { openSnackbar } = useSnackbar();
   const formik = useFormik<{
     email: string;
     name: string;
@@ -51,9 +53,7 @@ const SignUpModal = (): React.ReactNode => {
     });
   };
 
-  const handleSubmit = () => {
-    formik.handleSubmit();
-  };
+  const handleSubmit = () => {};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     formik.handleChange(e.target.id)(e.target.value);
