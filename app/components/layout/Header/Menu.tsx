@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
-import { Menu as MenuIcon, Face6, Public } from "@mui/icons-material";
 import { Avatar, Button, ClickAwayListener, IconButton, Typography } from "@mui/material";
 import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { FaEarthAmericas } from "react-icons/fa6";
+import { IoMenu, IoPersonSharp } from "react-icons/io5";
 
 import LanguageModal from "components/modal/LanguageModal";
 import LoginModal from "components/modal/LoginModal";
@@ -86,15 +87,15 @@ const Menu = ({ user }: Props): React.ReactNode => {
           {t("header.menu.yourhome")}
         </BannerLabel>
       </Banner>
-      <LanguageButton sx={{ width: 40, height: 40 }} onClick={handleLanguageClick}>
-        <Public sx={{ width: 16, height: 16, color: "text.primary" }} />
+      <LanguageButton sx={{ width: 40, height: 40, color: "text.primary" }} onClick={handleLanguageClick}>
+        <FaEarthAmericas size={16} />
       </LanguageButton>
       <MenuContainer>
         <ClickAwayListener onClickAway={handleClose}>
           <MenuButton onClick={handleToggle} $isActive={isOpen}>
-            <MenuIcon sx={{ width: 20, height: 20 }} />
+            <IoMenu size={20} />
             <MenuAvatar sx={{ width: 32, height: 32, bgcolor: "text.secondary" }}>
-              <Face6 sx={{ width: 28, height: 28 }} />
+              <IoPersonSharp size={20} />
             </MenuAvatar>
           </MenuButton>
         </ClickAwayListener>
@@ -139,7 +140,7 @@ const LanguageButton = styled(IconButton)`
   margin-inline-end: 8px;
 
   @media ${Devices.Desktop} {
-    display: block;
+    display: flex;
   }
 `;
 const MenuContainer = styled.div`

@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { SearchOutlined } from "@mui/icons-material";
 import { Avatar, Typography } from "@mui/material";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { IoSearch } from "react-icons/io5";
 
 import BoxShadows from "styles/boxShadows";
 import { Devices } from "styles/breakpoints";
@@ -33,13 +33,13 @@ const Search = (): React.ReactNode => {
           </Label>
           {item.hasIcon && (
             <Icon sx={{ width: 32, height: 32, bgcolor: "primary.main" }}>
-              <SearchOutlined sx={{ width: 16, height: 16 }} />
+              <IoSearch size={16} />
             </Icon>
           )}
         </Item>
       ))}
       <MobileItem>
-        <SearchOutlined sx={{ width: 28, height: 28 }} />
+        <IoSearch size={20} />
         <MobileLabels>
           <MobileLabel variant="body2" fontWeight={FontWeight.SemiBold}>
             {t("header.search.anywhere")}

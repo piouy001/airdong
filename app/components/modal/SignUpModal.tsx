@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
-import { Google, GitHub } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { BsGithub } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 import * as yup from "yup";
 
 import ModalLayout from "components/modal/ModalLayout";
@@ -134,10 +135,10 @@ const SignUpModal = (): React.ReactNode => {
             {t("signup.form.cta")}
           </LoadingButton>
           <Divider />
-          <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<Google />}>
+          <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<FcGoogle />}>
             {t("signup.form.cta.google")}
           </Button>
-          <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<GitHub />}>
+          <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<BsGithub />}>
             {t("signup.form.cta.github")}
           </Button>
         </ButtonContainer>

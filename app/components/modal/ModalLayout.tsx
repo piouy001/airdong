@@ -1,10 +1,10 @@
 import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Close as CloseIcon } from "@mui/icons-material";
 import { Dialog, IconButton, Typography, useMediaQuery } from "@mui/material";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import React from "react";
+import { IoClose } from "react-icons/io5";
 
 import { useModal } from "contexts/ModalContext";
 
@@ -54,7 +54,7 @@ const ModalLayout = ({ title, maxWidth, withDivider = true, children }: Props): 
     >
       <Header>
         <CloseButton color="secondary" onClick={handleClose}>
-          <CloseIcon />
+          <IoClose size={24} />
         </CloseButton>
         {!!title && <Title variant="h6">{title}</Title>}
       </Header>
@@ -80,9 +80,9 @@ const Header = styled.div`
 const CloseButton = styled(IconButton)`
   position: absolute;
   left: 12px;
-  top: 16px;
-  width: 32px;
-  height: 32px;
+  top: 12px;
+  width: 40px;
+  height: 40px;
 `;
 const Title = styled(Typography)``;
 const Content = styled.div`
