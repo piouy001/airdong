@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import LanguageModal from "components/modal/LanguageModal";
+import LoginModal from "components/modal/LoginModal";
 import SignUpModal from "components/modal/SignUpModal";
 import { useModal } from "contexts/ModalContext";
 import BoxShadows from "styles/boxShadows";
@@ -43,7 +44,11 @@ const Menu = (): React.ReactNode => {
     },
     {
       label: t("header.menu.login"),
-      onClick: () => {},
+      onClick: () => {
+        openModal({
+          content: <LoginModal />,
+        });
+      },
     },
   ];
 

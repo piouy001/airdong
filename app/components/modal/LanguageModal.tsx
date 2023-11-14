@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 import { LANGUAGE_STORAGE_KEY } from "constants/language";
 import i18n from "i18n";
+import { Devices } from "styles/breakpoints";
 
 import ModalLayout from "./ModalLayout";
 
@@ -60,13 +61,15 @@ const List = styled.div`
 const Item = styled.div<{ $isActive: boolean }>`
   display: flex;
   flex-direction: column;
-  width: calc(20% - 8px);
+  width: calc(33% - 8px);
   padding: 8px 12px;
   border-radius: 8px;
-  cursor: pointer;
-
   border: 1px solid
     ${({ $isActive, theme }) => ($isActive ? theme.palette.text.primary : theme.palette.background.default)};
+  cursor: pointer;
+  @media ${Devices.Desktop} {
+    width: calc(20% - 8px);
+  }
   &:hover {
     border: 1px solid ${({ $isActive, theme }) => ($isActive ? theme.palette.text.primary : theme.palette.grey[100])};
     background: ${({ theme }) => theme.palette.grey[100]};

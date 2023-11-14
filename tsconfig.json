@@ -14,6 +14,9 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": "./app",
+    "paths": {
+      "pages/*": ["../pages/*"]
+    },
     "plugins": [
       {
         "name": "next"

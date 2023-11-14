@@ -7,7 +7,7 @@ import Header from "components/layout/Header/Header";
 import Modal from "components/modal";
 import ThemeRegistry from "components/theme/ThemeRegistry";
 import RootContextProvider from "contexts";
-
+import { getCurrentUser } from "utils/auth";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,21 +15,25 @@ export const metadata: Metadata = {
   description: "Vacation Homes &amp; Condo Rentals",
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => (
-  <html lang="en">
-    <body>
-      <I18nProvider>
-        <ThemeRegistry>
-          <RootContextProvider>
-            <Header />
-            {children}
-            <Modal />
-            <Snackbar />
-          </RootContextProvider>
-        </ThemeRegistry>
-      </I18nProvider>
-    </body>
-  </html>
-);
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+  const user = await getCurrentUser();
+
+  return (
+    <html lang="en">
+      <body>
+        <I18nProvider>
+          <ThemeRegistry>
+            <RootContextProvider>
+              <Header user={user} />
+              {children}
+              <Modal />
+              <Snackbar />
+            </RootContextProvider>
+          </ThemeRegistry>
+        </I18nProvider>
+      </body>
+    </html>
+  );
+};
 
 export default RootLayout;

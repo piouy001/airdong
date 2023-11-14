@@ -6,8 +6,6 @@
   "header.menu.signup": "Sign Up",
   "header.menu.login": "Login",
   "header.language.title": "Choose a language and region",
-  "header.language.label": "English",
-  "header.menu.country": "United States",
   "email.required.error": "Email is required",
   "email.valid.error": "Enter a valid email.",
   "name.required.error": "Enter a valid email.",
@@ -16,6 +14,7 @@
   "password.required.error": "Password is required.",
   "password.min.error": "Password must be at least 10 characters",
   "password.numbers.error": "Password must include numbers",
+  "signup.header.title": "Sign Up or Login",
   "signup.form.title": "Welcome to Airdong",
   "signup.form.email": "Email",
   "signup.form.name": "Name",
@@ -24,5 +23,11 @@
   "signup.form.cta.google": "Continue with Google",
   "signup.form.cta.github": "Continue width Github",
   "signup.form.hasaccount": "Already have an account?",
-  "signup.form.login": "Login"
+  "signup.form.login": "Login",
+  "signup.form.signuptext": "First time using Airdong?",
+  "signup.success.text": "Congratulations, your account has been successfully created.",
+  "signup.error.text": "Joined failed. Please check again.",
+  "login.success.text": "Login Success!",
+  "login.error.text": "Login failed. Please check again.",
+  "login.header.title": "Login or Sign Up"
 }

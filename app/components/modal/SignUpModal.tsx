@@ -41,7 +41,22 @@ const SignUpModal = (): React.ReactNode => {
     validationSchema: signUpFormSchema,
     validateOnMount: true,
     onSubmit: data => {
-      mutate.trigger(data);
+      mutate
+        .trigger(data)
+        .then(() => {
+          openSnackbar({
+            snackbarType: "success",
+            text: t("signup.success.text"),
+          });
+
+          closeModal();
+        })
+        .catch(() => {
+          openSnackbar({
+            snackbarType: "error",
+            text: t("signup.error.text"),
+          });
+        });
     },
   });
 
@@ -53,7 +68,9 @@ const SignUpModal = (): React.ReactNode => {
     });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    formik.handleSubmit();
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     formik.handleChange(e.target.id)(e.target.value);
@@ -61,7 +78,7 @@ const SignUpModal = (): React.ReactNode => {
   };
 
   return (
-    <ModalLayout title={t("header.menu.signup")}>
+    <ModalLayout title={t("signup.header.title")}>
       <Container>
         <Content>
           <Title variant="h3">{t("signup.form.title")}</Title>
@@ -142,39 +159,39 @@ const SignUpModal = (): React.ReactNode => {
   );
 };
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
 `;
-const Content = styled.div`
+export const Content = styled.div`
   flex: 1 1 auto;
 `;
-const Title = styled(Typography)`
+export const Title = styled(Typography)`
   margin-block-end: 24px;
 `;
-const FormContainer = styled.div`
+export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
 `;
-const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
 `;
-const Divider = styled.div`
+export const Divider = styled.div`
   width: 100%;
   height: 1px;
   margin-block: 16px;
   background: ${({ theme }) => theme.palette.divider};
 `;
-const TextContainer = styled.div`
+export const TextContainer = styled.div`
   margin-block-start: 12px;
   text-align: center;
 `;
-const Text = styled(Typography)``;
-const AccentText = styled(Text)`
+export const Text = styled(Typography)``;
+export const AccentText = styled(Text)`
   margin-inline-start: 8px;
   cursor: pointer;
 `;
