@@ -120,6 +120,14 @@ const LoginModal = (): React.ReactNode => {
               helperText={
                 formik.errors.password && formik.touched.password && getPasswordErrorMessages()[formik.errors.password]
               }
+              onKeyDown={e => {
+                if (e.code === "Enter") {
+                  if (formik.isValid) {
+                    handleSubmit();
+                  }
+                  e.preventDefault();
+                }
+              }}
               fullWidth
             />
           </FormContainer>

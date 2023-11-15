@@ -130,6 +130,14 @@ const SignUpModal = (): React.ReactNode => {
             size="large"
             disabled={!formik.isValid}
             onClick={handleSubmit}
+            onKeyDown={e => {
+              if (e.code === "Enter") {
+                if (formik.isValid) {
+                  handleSubmit();
+                }
+                e.preventDefault();
+              }
+            }}
             fullWidth
             sx={{ marginBlockStart: "32px" }}
           >
