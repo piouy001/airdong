@@ -18,7 +18,7 @@
   "name.min.error": "이름은 최소 2자 이상으로 설정가능합니다.",
   "name.max.error": "이름은 최대 12자 까지 설정 가능합니다.",
   "password.required.error": "패스워드를 입력해주세요.",
-  "password.min.error": "패스워드는 최소 2자 이상으로 설정가능합니다.",
+  "password.min.error": "패스워드는 최소 10자 이상으로 설정가능합니다.",
   "password.numbers.error": "패스워드에는 숫자가 포함되어야 합니다.",
   "signup.form.title": "에어동에 오신 것을 환영합니다.",
   "signup.form.email": "이메일",
