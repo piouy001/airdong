@@ -15,7 +15,6 @@ import ModalLayout from "./ModalLayout";
 const LanguageModal = (): React.ReactNode => {
   const { t } = useTranslation();
   const { closeModal } = useModal();
-
   const languages = [
     { label: "English", country: "United States", value: "en" },
     { label: "한국어", country: "대한민국", value: "ko" },

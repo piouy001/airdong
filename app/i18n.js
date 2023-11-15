@@ -5,10 +5,12 @@ import resources from "./locales";
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "ko",
-  fallbackLng: "ko",
+  lng: "en",
+  fallbackLng: "en",
   defaultNS: "default",
-  interpolation: { escapeValue: true },
+  interpolation: {
+    escapeValue: true,
+  },
   returnObjects: true,
   returnEmptyString: true,
   returnNull: true,

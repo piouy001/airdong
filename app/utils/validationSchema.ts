@@ -7,3 +7,15 @@ export const passwordSchema = yup
   .min(10, "string.min")
   .matches(/[0-9]+/, "numbers")
   .required("any.empty");
+
+export const rentSchema = yup.object({
+  category: yup.string().required(),
+  location: yup.string().required(),
+  guestCount: yup.number().required(),
+  roomCount: yup.number().required(),
+  bathroomCount: yup.number().required(),
+  imageSrc: yup.string().required(),
+  price: yup.number().required(),
+  title: yup.string().required(),
+  description: yup.string().required(),
+});

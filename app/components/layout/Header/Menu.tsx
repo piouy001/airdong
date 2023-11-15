@@ -8,6 +8,7 @@ import { IoMenu, IoPersonSharp } from "react-icons/io5";
 
 import LanguageModal from "components/modal/LanguageModal";
 import LoginModal from "components/modal/LoginModal";
+import RentModal from "components/modal/RentModal";
 import SignUpModal from "components/modal/SignUpModal";
 import { useModal } from "contexts/ModalContext";
 import BoxShadows from "styles/boxShadows";
@@ -31,6 +32,19 @@ const Menu = ({ user }: Props): React.ReactNode => {
     });
   };
 
+  const handleBannerClick = () => {
+    if (!user) {
+      openModal({
+        content: <LoginModal />,
+      });
+      return;
+    }
+
+    openModal({
+      content: <RentModal />,
+    });
+  };
+
   const handleToggle = () => {
     setIsOpen(prev => !prev);
   };
@@ -50,7 +64,7 @@ const Menu = ({ user }: Props): React.ReactNode => {
         { label: t("header.menu.wishlists"), onClick: () => {}, isAccent: true },
         { label: t("header.menu.reservations"), onClick: () => {}, isAccent: true },
         { label: t("header.menu.properties"), onClick: () => {}, isAccent: true },
-        { label: t("header.menu.myhome"), onClick: () => {}, isAccent: true },
+        { label: t("header.menu.myhome"), onClick: handleBannerClick, isAccent: true },
         {
           label: t("header.menu.logout"),
           onClick: () => {
@@ -82,7 +96,7 @@ const Menu = ({ user }: Props): React.ReactNode => {
 
   return (
     <Container>
-      <Banner color="secondary">
+      <Banner color="secondary" onClick={handleBannerClick}>
         <BannerLabel variant="body2" fontWeight={FontWeight.SemiBold}>
           {t("header.menu.yourhome")}
         </BannerLabel>

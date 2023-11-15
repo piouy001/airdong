@@ -52,6 +52,7 @@ const SignUpModal = (): React.ReactNode => {
           });
 
           closeModal();
+          navigateToLoginScreen();
         })
         .catch(() => {
           openSnackbar({

@@ -65,5 +65,10 @@
   "category.barns.label": "Barns",
   "category.barns.desc": "This property is in the barn!",
   "category.lux.label": "Lux",
-  "category.lux.desc": "This property is luxurious!"
+  "category.lux.desc": "This property is luxurious!",
+  "rent.create.cta": "Create",
+  "rent.next.cta": "Next",
+  "rent.back.cta": "Back",
+  "rent.category.title": "Which of these best describes your place?",
+  "rent.category.desc": "Pick a category"
 }

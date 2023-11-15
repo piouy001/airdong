@@ -5,6 +5,7 @@ import { Typography } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 import React, { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { BsSnow } from "react-icons/bs";
 import { FaSkiing } from "react-icons/fa";
 import {
@@ -21,41 +22,86 @@ import { IoDiamond } from "react-icons/io5";
 import { MdOutlineVilla } from "react-icons/md";
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 
-import i18n from "i18n";
 import Transitions from "styles/transitions";
 import { FontWeight } from "styles/typography";
 
-const categories = [
-  { label: i18n.t("category.beachs.label"), description: i18n.t("category.beach.desc"), icon: TbBeach },
-  { label: i18n.t("category.windmills.label"), description: i18n.t("category.windmills.desc"), icon: GiWindmill },
-  { label: i18n.t("category.modern.label"), description: i18n.t("category.modern.desc"), icon: MdOutlineVilla },
-  { label: i18n.t("category.countryside.label"), description: i18n.t("category.countryside.desc"), icon: TbMountain },
-  { label: i18n.t("category.pools.label"), description: i18n.t("category.pools.desc"), icon: TbPool },
-  { label: i18n.t("category.islands.label"), description: i18n.t("category.islands.desc"), icon: GiIsland },
-  { label: i18n.t("category.lake.label"), description: i18n.t("category.lake.desc"), icon: GiBoatFishing },
-  { label: i18n.t("category.skiing.label"), description: i18n.t("category.skiing.desc"), icon: FaSkiing },
-  { label: i18n.t("category.castles.label"), description: i18n.t("category.castles.desc"), icon: GiCastle },
-  { label: i18n.t("category.camping.label"), description: i18n.t("category.camping.desc"), icon: GiForestCamp },
-  { label: i18n.t("category.arctic.label"), description: i18n.t("category.arctic.desc"), icon: BsSnow },
-  { label: i18n.t("category.cave.label"), description: i18n.t("category.cave.desc"), icon: GiCaveEntrance },
-  { label: i18n.t("category.desert.label"), description: i18n.t("category.desert.desc"), icon: GiCactus },
-  { label: i18n.t("category.barns.label"), description: i18n.t("category.barns.desc"), icon: GiBarn },
-  { label: i18n.t("category.lux.label"), description: i18n.t("category.lux.desc"), icon: IoDiamond },
+export const categories = [
+  { key: "beachs", label: "category.beachs.label", description: "category.beachs.desc", icon: TbBeach },
+  {
+    key: "windmills",
+    label: "category.windmills.label",
+    description: "category.windmills.desc",
+    icon: GiWindmill,
+  },
+  {
+    key: "modern",
+    label: "category.modern.label",
+    description: "category.modern.desc",
+    icon: MdOutlineVilla,
+  },
+  {
+    key: "countryside",
+    label: "category.countryside.label",
+    description: "category.countryside.desc",
+    icon: TbMountain,
+  },
+  { key: "pools", label: "category.pools.label", description: "category.pools.desc", icon: TbPool },
+  {
+    key: "islands",
+    label: "category.islands.label",
+    description: "category.islands.desc",
+    icon: GiIsland,
+  },
+  { key: "lake", label: "category.lake.label", description: "category.lake.desc", icon: GiBoatFishing },
+  {
+    key: "skiing",
+    label: "category.skiing.label",
+    description: "category.skiing.desc",
+    icon: FaSkiing,
+  },
+  {
+    key: "castles",
+    label: "category.castles.label",
+    description: "category.castles.desc",
+    icon: GiCastle,
+  },
+  {
+    key: "camping",
+    label: "category.camping.label",
+    description: "category.camping.desc",
+    icon: GiForestCamp,
+  },
+  { key: "arctic", label: "category.arctic.label", description: "category.arctic.desc", icon: BsSnow },
+  {
+    key: "cave",
+    label: "category.cave.label",
+    description: "category.cave.desc",
+    icon: GiCaveEntrance,
+  },
+  {
+    key: "desert",
+    label: "category.desert.label",
+    description: "category.desert.desc",
+    icon: GiCactus,
+  },
+  { key: "barns", label: "category.barns.label", description: "category.barns.desc", icon: GiBarn },
+  { key: "lux", label: "category.lux.label", description: "category.lux.desc", icon: IoDiamond },
 ];
 
 const Categories = (): React.ReactNode => {
+  const { t } = useTranslation();
   const router = useRouter();
   const params = useSearchParams();
   const pathname = usePathname();
   const isSelectedCategory = params?.get("category");
   const isMainPage = pathname === "/";
   const handleClick = useCallback(
-    (label: string) => {
+    (key: string) => {
       const currentQuery = params ? qs.parse(params.toString()) : {};
 
       const updatedQuery = {
         ...currentQuery,
-        category: params?.get("category") === label ? null : label,
+        category: params?.get("category") === key ? null : key,
       };
 
       const url = qs.stringifyUrl(
@@ -77,14 +123,14 @@ const Categories = (): React.ReactNode => {
     <Container>
       {categories.map(item => (
         <Item
-          key={item.label}
-          $isSelected={item.label === isSelectedCategory}
+          key={item.key}
+          $isSelected={item.key === isSelectedCategory}
           onClick={() => {
-            handleClick(item.label);
+            handleClick(item.key);
           }}
         >
           <item.icon size={24} />
-          <Label variant="subtitle1">{item.label}</Label>
+          <Label variant="subtitle1">{t(item.label)}</Label>
         </Item>
       ))}
     </Container>

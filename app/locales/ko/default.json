@@ -65,5 +65,10 @@
   "category.barns.label": "헛간",
   "category.barns.desc": "이 숙소은 헛간에 있습니다!",
   "category.lux.label": "고급",
-  "category.lux.desc": "이 숙소는 고급스럽습니다."
+  "category.lux.desc": "이 숙소는 고급스럽습니다.",
+  "rent.create.cta": "등록하기",
+  "rent.next.cta": "계속하기",
+  "rent.back.cta": "뒤로가기",
+  "rent.category.title": "이 중에서 장소를 가장 잘 묘사한 것을 선택해주세요.",
+  "rent.category.desc": "카테고리 선택"
 }
