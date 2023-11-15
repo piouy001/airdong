@@ -83,5 +83,17 @@
   "rent.info.bathroom.subtitle": "How many batgrooms do you have",
   "rent.images.title": "Add a photo of your place",
   "rent.images.desc": "Show guests what your place looks like!",
-  "rent.images.label": "Click to upload"
+  "rent.images.label": "Click to upload",
+  "rent.description.title": "How would you describe your place?",
+  "rent.description.desc": "Short and sweet works best!",
+  "rent.description.title.label": "Title",
+  "rent.description.desc.label": "Description",
+  "rent.description.title.error": "Title is required",
+  "rent.description.desc.error": "Description is required",
+  "rent.price.title": "Now, set your price",
+  "rent.price.subtitle": "How much do you charge per night?",
+  "rent.price.label": "Price",
+  "rent.price.error": "Price is required",
+  "listings.create.success": "your place has been successfully created.",
+  "listings.create.error": "Created failed. Please check again."
 }

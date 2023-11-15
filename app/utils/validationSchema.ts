@@ -8,13 +8,22 @@ export const passwordSchema = yup
   .matches(/[0-9]+/, "numbers")
   .required("any.empty");
 
+  
+const locationSchema = yup.object({
+  value:yup.string().required(),
+  label:yup.string().required(),
+  latlng:yup.array(yup.number()).required(),
+  flag:yup.string().required(),
+  region:yup.string().required(),
+}).nullable();
+
 export const rentSchema = yup.object({
-  category: yup.string().required(),
-  location: yup.string().required(),
-  guestCount: yup.number().required(),
-  roomCount: yup.number().required(),
-  bathroomCount: yup.number().required(),
-  imageSrc: yup.string().required(),
+  category: yup.string(),
+  location: locationSchema,
+  guestCount: yup.number(),
+  roomCount: yup.number(),
+  bathroomCount: yup.number(),
+  imageSrc: yup.string(),
   price: yup.number().required(),
   title: yup.string().required(),
   description: yup.string().required(),

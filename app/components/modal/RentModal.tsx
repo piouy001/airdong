@@ -1,15 +1,22 @@
 import styled from "@emotion/styled";
+import { LoadingButton } from "@mui/lab";
 import { Button } from "@mui/material";
-import { useFormik } from "formik";
+import { isNaN, useFormik } from "formik";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import ModalLayout from "components/modal/ModalLayout";
 import CategoriesStep from "components/rent/CategoriesStep";
+import DescriptionStep from "components/rent/DescriptionStep";
 import ImagesStep from "components/rent/ImagesStep";
 import InfoStep from "components/rent/InfoStep";
 import LocationStep from "components/rent/LocationStep";
+import PriceStep from "components/rent/PricesStep";
+import { useModal } from "contexts/ModalContext";
+import { useSnackbar } from "contexts/SnackbarContext";
 import { CountryType } from "hooks/useCountries";
+import useListingsMutate from "queries/listings/useListingsMutate";
 import { rentSchema } from "utils/validationSchema";
 
 import { ButtonContainer as BaseButtonContainer, Container, Content } from "./SignUpModal";
@@ -26,17 +33,10 @@ enum Steps {
 const RentModal = (): React.ReactNode => {
   const { t } = useTranslation();
   const [step, setStep] = useState(Steps.Category);
-
-  const handleBack = () => {
-    if (step === Steps.Category) return;
-
-    setStep(value => value - 1);
-  };
-
-  const handleNext = () => {
-    setStep(value => value + 1);
-  };
-
+  const mutate = useListingsMutate();
+  const router = useRouter();
+  const { closeModal } = useModal();
+  const { openSnackbar } = useSnackbar();
   const formik = useFormik<{
     category: string;
     location: CountryType | null;
@@ -61,11 +61,51 @@ const RentModal = (): React.ReactNode => {
     },
     validationSchema: rentSchema,
     validateOnMount: true,
-    onSubmit: data => {},
+    onSubmit: data => {
+      mutate.trigger(data)
+      .then(() => {
+        openSnackbar({
+          snackbarType: "success",
+          text: t("listings.create.success"),
+        });
+        router.refresh();
+        formik.resetForm();
+        setStep(Steps.Category);
+        closeModal();
+      })
+      .catch(() => {
+        openSnackbar({
+          snackbarType: "error",
+          text: t("listings.create.error"),
+        });
+      })
+    },
   });
 
+
+  const getDisabled = () => {
+    if (step === Steps.Description) return !formik.values.title || !formik.values.description;
+    if (step === Steps.Price) return !formik.values.price || isNaN(formik.values.price);
+
+    return false;
+  };
+
+  const handleBack = () => {
+    if (step === Steps.Category) return;
+
+    setStep(value => value - 1);
+  };
+
+  const handleNext = () => {
+    if (step !== Steps.Price) {
+      setStep(value => value + 1);
+      return;
+    }
+    formik.handleSubmit();
+  };
+
   const handleChange = (name: string, value: string | React.ChangeEvent<any>) => {
-    formik.handleChange("guestCount")(value);
+    formik.handleChange(name)(value);
   };
 
   const setValue = (name: string, value: any) => {
@@ -103,6 +143,16 @@ const RentModal = (): React.ReactNode => {
         return <InfoStep data={infos} onChange={setValue} />;
       case Steps.Images:
         return <ImagesStep value={formik.values.imageSrc} onChange={setValue} />;
+      case Steps.Description:
+        return (
+          <DescriptionStep
+            title={formik.values.title}
+            description={formik.values.description}
+            onChange={handleChange}
+          />
+        );
+      case Steps.Price:
+        return <PriceStep price={formik.values.price} onChange={handleChange} />;
       default:
         return null;
     }
@@ -118,9 +168,16 @@ const RentModal = (): React.ReactNode => {
               {t("rent.back.cta")}
             </Button>
           )}
-          <Button variant="contained" size="large" onClick={handleNext} fullWidth>
-            {t("rent.next.cta")}
-          </Button>
+          <LoadingButton
+            loading={mutate.isMutating}
+            disabled={getDisabled()}
+            variant="contained"
+            size="large"
+            onClick={handleNext}
+            fullWidth
+          >
+            {step === Steps.Price ? t("rent.create.cta") : t("rent.next.cta")}
+          </LoadingButton>
         </ButtonContainer>
       </Container>
     </ModalLayout>
