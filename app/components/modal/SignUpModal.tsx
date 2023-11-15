@@ -136,7 +136,16 @@ const SignUpModal = (): React.ReactNode => {
             {t("signup.form.cta")}
           </LoadingButton>
           <Divider />
-          <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<FcGoogle />}>
+          <Button
+            variant="outlined"
+            size="large"
+            color="secondary"
+            onClick={() => {
+              signIn("google");
+            }}
+            fullWidth
+            startIcon={<FcGoogle />}
+          >
             {t("signup.form.cta.google")}
           </Button>
           <Button

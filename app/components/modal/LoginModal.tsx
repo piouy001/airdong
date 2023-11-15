@@ -137,10 +137,28 @@ const LoginModal = (): React.ReactNode => {
             {t("signup.form.cta")}
           </LoadingButton>
           <Divider />
-          <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<FcGoogle />}>
+          <Button
+            variant="outlined"
+            size="large"
+            color="secondary"
+            onClick={() => {
+              signIn("google");
+            }}
+            fullWidth
+            startIcon={<FcGoogle />}
+          >
             {t("signup.form.cta.google")}
           </Button>
-          <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<BsGithub />}>
+          <Button
+            variant="outlined"
+            size="large"
+            color="secondary"
+            onClick={() => {
+              signIn("github");
+            }}
+            fullWidth
+            startIcon={<BsGithub />}
+          >
             {t("signup.form.cta.github")}
           </Button>
         </ButtonContainer>
