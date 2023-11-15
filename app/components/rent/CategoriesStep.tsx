@@ -6,7 +6,8 @@ import { useTranslation } from "react-i18next";
 import { categories } from "components/layout/Header/Categories";
 import { Devices } from "styles/breakpoints";
 import Transitions from "styles/transitions";
-import { FontWeight } from "styles/typography";
+
+import Header from "./Header";
 
 interface Props {
   selectedCategory?: string;
@@ -18,10 +19,7 @@ const CategoriesStep = ({ selectedCategory, onChange }: Props): React.ReactNode 
 
   return (
     <>
-      <Title variant="h3">{t("rent.category.title")}</Title>
-      <Description variant="h6" color="text.secondary" fontWeight={FontWeight.Regular}>
-        {t("rent.category.desc")}
-      </Description>
+      <Header title={t("rent.category.title")} description={t("rent.category.desc")} />
       <Categories>
         {categories.map(item => (
           <Category
