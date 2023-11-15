@@ -1,11 +1,6 @@
-import { Outfit, Noto_Sans_KR } from "next/font/google";
+import { Outfit } from "next/font/google";
 
 const outfit = Outfit({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
-
-const notoSansKr = Noto_Sans_KR({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
@@ -17,7 +12,7 @@ export const FontWeight = {
 } as const;
 
 const typography = {
-  fontFamily: `${outfit.style.fontFamily},${notoSansKr.style.fontFamily}`,
+  fontFamily: outfit.style.fontFamily,
   h1: {
     fontWeight: FontWeight.SemiBold,
     fontSize: "32px",

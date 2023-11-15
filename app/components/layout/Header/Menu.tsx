@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { Avatar, Button, ClickAwayListener, IconButton, Typography } from "@mui/material";
-import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -15,9 +14,10 @@ import BoxShadows from "styles/boxShadows";
 import { Devices } from "styles/breakpoints";
 import Transitions from "styles/transitions";
 import { FontWeight } from "styles/typography";
+import { SafeUser } from "types/user";
 
 interface Props {
-  user: User | null;
+  user: SafeUser | null;
 }
 
 const Menu = ({ user }: Props): React.ReactNode => {
@@ -94,7 +94,7 @@ const Menu = ({ user }: Props): React.ReactNode => {
         <ClickAwayListener onClickAway={handleClose}>
           <MenuButton onClick={handleToggle} $isActive={isOpen}>
             <IoMenu size={20} />
-            <MenuAvatar sx={{ width: 32, height: 32, bgcolor: "text.secondary" }}>
+            <MenuAvatar sx={{ width: 32, height: 32, bgcolor: "text.secondary" }} src={user?.image ?? ""}>
               <IoPersonSharp size={20} />
             </MenuAvatar>
           </MenuButton>

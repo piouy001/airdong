@@ -1,17 +1,17 @@
 "use client";
 
 import styled from "@emotion/styled";
-import { User } from "@prisma/client";
 import React from "react";
 
 import { Devices } from "styles/breakpoints";
+import { SafeUser } from "types/user";
 
 import Logo from "./Logo";
 import Menu from "./Menu";
 import Search from "./Search";
 
 interface Props {
-  user: User | null;
+  user: SafeUser | null;
 }
 
 const Header = ({ user }: Props): React.ReactNode => (

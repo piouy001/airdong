@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { LoadingButton } from "@mui/lab";
 import { Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
+import { signIn } from "next-auth/react";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { BsGithub } from "react-icons/bs";
@@ -138,7 +139,16 @@ const SignUpModal = (): React.ReactNode => {
           <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<FcGoogle />}>
             {t("signup.form.cta.google")}
           </Button>
-          <Button variant="outlined" size="large" color="secondary" fullWidth startIcon={<BsGithub />}>
+          <Button
+            variant="outlined"
+            size="large"
+            color="secondary"
+            onClick={() => {
+              signIn("github");
+            }}
+            fullWidth
+            startIcon={<BsGithub />}
+          >
             {t("signup.form.cta.github")}
           </Button>
         </ButtonContainer>
