@@ -3,6 +3,7 @@ import React from "react";
 
 import I18nProvider from "I18nextProvider";
 import Snackbar from "components/Snackbar";
+import Categories from "components/layout/Header/Categories";
 import Header from "components/layout/Header/Header";
 import Modal from "components/modal";
 import ThemeRegistry from "components/theme/ThemeRegistry";
@@ -25,6 +26,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <ThemeRegistry>
             <RootContextProvider>
               <Header user={user} />
+              <Categories />
               {children}
               <Modal />
               <Snackbar />

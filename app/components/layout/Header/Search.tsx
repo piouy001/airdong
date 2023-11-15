@@ -107,7 +107,7 @@ const MobileItem = styled.div`
 const MobileLabels = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
+  padding-left: 16px;
 `;
 const MobileLabel = styled(Typography)``;
 

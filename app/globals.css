@@ -5,3 +5,12 @@
 body {
   -webkit-tap-highlight-color: transparent;
 }
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 8px;
+}
