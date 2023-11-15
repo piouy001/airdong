@@ -72,5 +72,16 @@
   "rent.category.title": "Which of these best describes your place?",
   "rent.category.desc": "Pick a category",
   "rent.location.title": "Where is your place located?",
-  "rent.location.desc": "Help guests find you!"
+  "rent.location.desc": "Help guests find you!",
+  "rent.info.title": "Share some basics about your place",
+  "rent.info.desc": "What amenities do you have?",
+  "rent.info.guest.title": "Guests",
+  "rent.info.guest.subtitle": "How many guests do you allow?",
+  "rent.info.room.title": "Rooms",
+  "rent.info.room.subtitle": "How many rooms do you have?",
+  "rent.info.bathroom.title": "Batgrooms",
+  "rent.info.bathroom.subtitle": "How many batgrooms do you have",
+  "rent.images.title": "Add a photo of your place",
+  "rent.images.desc": "Show guests what your place looks like!",
+  "rent.images.label": "Click to upload"
 }

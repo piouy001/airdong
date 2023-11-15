@@ -72,5 +72,16 @@
   "rent.category.title": "이 중에서 장소를 가장 잘 묘사한 것을 선택해주세요.",
   "rent.category.desc": "카테고리 선택",
   "rent.location.title": "장소는 어디에 있습니까?",
-  "rent.location.desc": "게스트가 장소를 찾을 수 있도록 도와주세요!"
+  "rent.location.desc": "게스트가 장소를 찾을 수 있도록 도와주세요!",
+  "rent.info.title": "장소에 대한 몇 가지 기본 사항을 공유하세요",
+  "rent.info.desc": "어떤 편의시설이 있나요?",
+  "rent.info.guest.title": "게스트",
+  "rent.info.guest.subtitle": "게스트는 몇 명까지 허용하나요?",
+  "rent.info.room.title": "방",
+  "rent.info.room.subtitle": "방이 몇 개 있나요?",
+  "rent.info.bathroom.title": "화장실",
+  "rent.info.bathroom.subtitle": "화장실이 몇 개 있나요?",
+  "rent.images.title": "사진을 추가해주세요.",
+  "rent.images.desc": "손님에게 귀하의 숙소가 어떤 모습인지 보여주세요!",
+  "rent.images.label": "클릭해서 업로드하세요."
 }

@@ -11,7 +11,7 @@ import Header from "./Header";
 
 interface Props {
   selectedCategory?: string;
-  onChange: (name: string, value: React.ChangeEvent<any>) => void;
+  onChange: (name: string, value: string|React.ChangeEvent<any>) => void;
 }
 
 const CategoriesStep = ({ selectedCategory, onChange }: Props): React.ReactNode => {

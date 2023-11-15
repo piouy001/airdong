@@ -6,6 +6,8 @@ import { useTranslation } from "react-i18next";
 
 import ModalLayout from "components/modal/ModalLayout";
 import CategoriesStep from "components/rent/CategoriesStep";
+import ImagesStep from "components/rent/ImagesStep";
+import InfoStep from "components/rent/InfoStep";
 import LocationStep from "components/rent/LocationStep";
 import { CountryType } from "hooks/useCountries";
 import { rentSchema } from "utils/validationSchema";
@@ -62,22 +64,45 @@ const RentModal = (): React.ReactNode => {
     onSubmit: data => {},
   });
 
-  const handleChange = (name: string, value: React.ChangeEvent<any>) => {
-    formik.handleChange(name)(value);
+  const handleChange = (name: string, value: string | React.ChangeEvent<any>) => {
+    formik.handleChange("guestCount")(value);
   };
+
+  const setValue = (name: string, value: any) => {
+    formik.setFieldValue(name, value);
+  };
+
+  const infos = [
+    {
+      name: "guestCount",
+      title: t("rent.info.guest.title"),
+      subtitle: t("rent.info.guest.subtitle"),
+      value: formik.values.guestCount,
+    },
+    {
+      name: "roomCount",
+      title: t("rent.info.room.title"),
+      subtitle: t("rent.info.room.subtitle"),
+      value: formik.values.roomCount,
+    },
+    {
+      name: "bathroomCount",
+      title: t("rent.info.bathroom.title"),
+      subtitle: t("rent.info.bathroom.subtitle"),
+      value: formik.values.bathroomCount,
+    },
+  ];
+
   const renderContent = (() => {
     switch (step) {
       case Steps.Category:
         return <CategoriesStep selectedCategory={formik.values.category} onChange={handleChange} />;
       case Steps.Location:
-        return (
-          <LocationStep
-            selectedLocation={formik.values.location}
-            onChange={value => {
-              formik.setFieldValue("location", value);
-            }}
-          />
-        );
+        return <LocationStep selectedLocation={formik.values.location} onChange={setValue} />;
+      case Steps.Info:
+        return <InfoStep data={infos} onChange={setValue} />;
+      case Steps.Images:
+        return <ImagesStep value={formik.values.imageSrc} onChange={setValue} />;
       default:
         return null;
     }

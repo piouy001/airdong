@@ -11,7 +11,7 @@ import Header from "./Header";
 
 interface Props {
   selectedLocation: CountryType | null;
-  onChange: (value: CountryType) => void;
+  onChange: (name: string, value: CountryType) => void;
 }
 
 const LocationStep = ({ selectedLocation, onChange }: Props): React.ReactNode => {
@@ -36,7 +36,7 @@ const LocationStep = ({ selectedLocation, onChange }: Props): React.ReactNode =>
         options={getAll()}
         value={selectedLocation}
         onChange={(value: any) => {
-          onChange(value);
+          onChange("location", value);
         }}
         formatOptionLabel={option => (
           <MenuItem>
