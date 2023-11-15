@@ -11,7 +11,7 @@ import Header from "./Header";
 
 interface Props {
   selectedCategory?: string;
-  onChange: (name: string, value: string | React.ChangeEvent<any>) => void;
+  onChange: (name: string, value: React.ChangeEvent<any>) => void;
 }
 
 const CategoriesStep = ({ selectedCategory, onChange }: Props): React.ReactNode => {
@@ -38,12 +38,6 @@ const CategoriesStep = ({ selectedCategory, onChange }: Props): React.ReactNode 
   );
 };
 
-const Title = styled(Typography)`
-  margin-block-end: 8px;
-`;
-const Description = styled(Typography)`
-  margin-block-end: 24px;
-`;
 const Categories = styled.div`
   overflow-y: auto;
   display: flex;

@@ -14,3 +14,10 @@ html::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 8px;
 }
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top {
+  z-index: 0 !important;
+}

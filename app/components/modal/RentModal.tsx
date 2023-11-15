@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import { Button } from "@mui/material";
 import { useFormik } from "formik";
 import React, { useState } from "react";
@@ -5,9 +6,11 @@ import { useTranslation } from "react-i18next";
 
 import ModalLayout from "components/modal/ModalLayout";
 import CategoriesStep from "components/rent/CategoriesStep";
+import LocationStep from "components/rent/LocationStep";
+import { CountryType } from "hooks/useCountries";
 import { rentSchema } from "utils/validationSchema";
 
-import { ButtonContainer, Container, Content } from "./SignUpModal";
+import { ButtonContainer as BaseButtonContainer, Container, Content } from "./SignUpModal";
 
 enum Steps {
   Category,
@@ -23,6 +26,8 @@ const RentModal = (): React.ReactNode => {
   const [step, setStep] = useState(Steps.Category);
 
   const handleBack = () => {
+    if (step === Steps.Category) return;
+
     setStep(value => value - 1);
   };
 
@@ -32,7 +37,7 @@ const RentModal = (): React.ReactNode => {
 
   const formik = useFormik<{
     category: string;
-    location: string;
+    location: CountryType | null;
     guestCount: number;
     roomCount: number;
     bathroomCount: number;
@@ -43,7 +48,7 @@ const RentModal = (): React.ReactNode => {
   }>({
     initialValues: {
       category: "",
-      location: "",
+      location: null,
       guestCount: 1,
       roomCount: 1,
       bathroomCount: 1,
@@ -57,14 +62,22 @@ const RentModal = (): React.ReactNode => {
     onSubmit: data => {},
   });
 
-  const handleChange = (name: string, value: string | React.ChangeEvent<any>) => {
+  const handleChange = (name: string, value: React.ChangeEvent<any>) => {
     formik.handleChange(name)(value);
   };
-
   const renderContent = (() => {
     switch (step) {
       case Steps.Category:
         return <CategoriesStep selectedCategory={formik.values.category} onChange={handleChange} />;
+      case Steps.Location:
+        return (
+          <LocationStep
+            selectedLocation={formik.values.location}
+            onChange={value => {
+              formik.setFieldValue("location", value);
+            }}
+          />
+        );
       default:
         return null;
     }
@@ -75,13 +88,12 @@ const RentModal = (): React.ReactNode => {
       <Container>
         <Content>{renderContent}</Content>
         <ButtonContainer>
-          <Button
-            variant="contained"
-            size="large"
-            // onClick={handleSubmit}
-            fullWidth
-            sx={{ marginBlockStart: "32px" }}
-          >
+          {step !== Steps.Category && (
+            <Button variant="outlined" color="secondary" size="large" onClick={handleBack} fullWidth>
+              {t("rent.back.cta")}
+            </Button>
+          )}
+          <Button variant="contained" size="large" onClick={handleNext} fullWidth>
             {t("rent.next.cta")}
           </Button>
         </ButtonContainer>
@@ -89,5 +101,11 @@ const RentModal = (): React.ReactNode => {
     </ModalLayout>
   );
 };
+
+const ButtonContainer = styled(BaseButtonContainer)`
+  display: flex;
+  flex-direction: row;
+  margin-block-start: 32px;
+`;
 
 export default RentModal;

@@ -70,5 +70,7 @@
   "rent.next.cta": "Next",
   "rent.back.cta": "Back",
   "rent.category.title": "Which of these best describes your place?",
-  "rent.category.desc": "Pick a category"
+  "rent.category.desc": "Pick a category",
+  "rent.location.title": "Where is your place located?",
+  "rent.location.desc": "Help guests find you!"
 }
