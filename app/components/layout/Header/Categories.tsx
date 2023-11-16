@@ -143,6 +143,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   padding-inline: 24px;
   padding-block-start: 8px;
   background: ${({ theme }) => theme.palette.background.default};
@@ -166,7 +167,7 @@ const Item = styled.div<{ $isSelected: boolean }>`
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  min-width: 36px;
+  margin-inline: 12px;
   padding-block: 12px;
   color: ${({ theme, $isSelected }) => ($isSelected ? theme.palette.text.primary : theme.palette.text.secondary)};
   border-bottom: 2px solid
