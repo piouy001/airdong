@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 import { Logo as LogoIcon } from "assets/assetMap";
+import { HOME_URL } from "constants/URLConstant";
 import { Devices } from "styles/breakpoints";
 
 const Logo = (): React.ReactNode => {
@@ -11,7 +12,7 @@ const Logo = (): React.ReactNode => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push("/");
+    router.push(HOME_URL);
   };
 
   return (

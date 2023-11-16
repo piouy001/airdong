@@ -8,6 +8,7 @@ import React, { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import FavoriteButton from "components/FavoriteButton";
+import { LISTINGS_URL } from "constants/URLConstant";
 import useCountries from "hooks/useCountries";
 import { FontWeight } from "styles/typography";
 import { SafeListing } from "types/listing";
@@ -44,7 +45,7 @@ const ListingCard = ({
   }, [reservation, data.price]);
 
   const handleClick = () => {
-    router.push(`listings/${data.id}`);
+    router.push(`${LISTINGS_URL}/${data.id}`);
   };
 
   const handleCancel = useCallback(

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Avatar, Button, ClickAwayListener, IconButton, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -10,6 +11,7 @@ import LanguageModal from "components/modal/LanguageModal";
 import LoginModal from "components/modal/LoginModal";
 import RentModal from "components/modal/RentModal";
 import SignUpModal from "components/modal/SignUpModal";
+import { TRIPS_URL } from "constants/URLConstant";
 import { useModal } from "contexts/ModalContext";
 import BoxShadows from "styles/boxShadows";
 import { Devices } from "styles/breakpoints";
@@ -24,6 +26,7 @@ interface Props {
 const Menu = ({ user }: Props): React.ReactNode => {
   const { t } = useTranslation();
   const { openModal } = useModal();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLanguageClick = () => {
@@ -60,7 +63,13 @@ const Menu = ({ user }: Props): React.ReactNode => {
     hasDivider?: boolean;
   }[] = user
     ? [
-        { label: t("header.menu.trips"), onClick: () => {}, isAccent: true },
+        {
+          label: t("header.menu.trips"),
+          onClick: () => {
+            router.push(TRIPS_URL);
+          },
+          isAccent: true,
+        },
         { label: t("header.menu.wishlists"), onClick: () => {}, isAccent: true },
         { label: t("header.menu.reservations"), onClick: () => {}, isAccent: true },
         { label: t("header.menu.properties"), onClick: () => {}, isAccent: true },

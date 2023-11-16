@@ -22,6 +22,7 @@ import { IoDiamond } from "react-icons/io5";
 import { MdOutlineVilla } from "react-icons/md";
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 
+import { HOME_URL } from "constants/URLConstant";
 import { Devices } from "styles/breakpoints";
 import Transitions from "styles/transitions";
 import { FontWeight } from "styles/typography";
@@ -95,7 +96,7 @@ const Categories = (): React.ReactNode => {
   const params = useSearchParams();
   const pathname = usePathname();
   const isSelectedCategory = params?.get("category");
-  const isMainPage = pathname === "/";
+  const isMainPage = pathname === HOME_URL;
   const handleClick = useCallback(
     (key: string) => {
       const currentQuery = params ? qs.parse(params.toString()) : {};
@@ -107,7 +108,7 @@ const Categories = (): React.ReactNode => {
 
       const url = qs.stringifyUrl(
         {
-          url: "/",
+          url: HOME_URL,
           query: updatedQuery,
         },
         { skipNull: true },

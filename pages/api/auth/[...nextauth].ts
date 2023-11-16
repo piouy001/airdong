@@ -5,6 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 
+import { HOME_URL } from "constants/URLConstant";
 import client from "libs/prismadb";
 
 export const authOptions: AuthOptions = {
@@ -50,7 +51,7 @@ export const authOptions: AuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/",
+    signIn: HOME_URL,
   },
   // debug: process.env.NODE_ENV === "development",
   session: {

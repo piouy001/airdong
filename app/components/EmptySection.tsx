@@ -6,28 +6,30 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { HOME_URL } from "constants/URLConstant";
+
 import Heading from "./Heading";
 
 interface Props {
-  title?: string;
-  description?: string;
+  titleKey?: string;
+  descriptionKey?: string;
   showReset?: boolean;
 }
 
-const EmptySection = (props: Props): React.ReactNode => {
+const EmptySection = ({ titleKey, descriptionKey, showReset }: Props): React.ReactNode => {
   const { t } = useTranslation();
   const router = useRouter();
-  const title = props?.title ?? t("section.empty.title");
-  const description = props?.description ?? t("section.empty.description");
+  const title = titleKey ? t(titleKey) : t("section.empty.title");
+  const description = descriptionKey ? t(descriptionKey) : t("section.empty.description");
 
   const handleReset = () => {
-    router.push("/");
+    router.push(HOME_URL);
   };
 
   return (
     <Container>
       <Heading title={title} description={description} />
-      {props?.showReset && (
+      {showReset && (
         <ResetButton variant="outlined" size="large" color="secondary" onClick={handleReset}>
           Remove all filters
         </ResetButton>
