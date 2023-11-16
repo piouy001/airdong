@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "@emotion/styled";
 import { Avatar, Button, ClickAwayListener, IconButton, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";

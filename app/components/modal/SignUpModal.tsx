@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "@emotion/styled";
 import { LoadingButton } from "@mui/lab";
 import { Button, TextField, Typography } from "@mui/material";

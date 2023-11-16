@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "@emotion/styled";
 import { Typography, useTheme } from "@mui/material";
 import { useTranslation } from "react-i18next";

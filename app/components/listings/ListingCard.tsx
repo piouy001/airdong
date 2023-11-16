@@ -1,6 +1,7 @@
+"use client";
+
 import styled from "@emotion/styled";
 import { Button, Typography } from "@mui/material";
-import { Reservation } from "@prisma/client";
 import { format } from "date-fns";
 import BaseImage from "next/image";
 import { useRouter } from "next/navigation";

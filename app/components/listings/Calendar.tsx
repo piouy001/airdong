@@ -1,3 +1,5 @@
+"use client";
+
 import { useTheme } from "@mui/material";
 import React from "react";
 import { DateRange, Range, RangeKeyDict } from "react-date-range";

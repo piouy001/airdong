@@ -1,3 +1,5 @@
+"use client";
+
 import { LoadingButton } from "@mui/lab";
 import { Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";

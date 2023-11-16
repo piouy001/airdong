@@ -3,6 +3,7 @@ import React from "react";
 
 import I18nProvider from "I18nextProvider";
 import Snackbar from "components/Snackbar";
+import UIBoundary from "components/UIBoundary";
 import Header from "components/layout/Header/Header";
 import Main from "components/layout/Header/Main";
 import Modal from "components/modal";
@@ -25,10 +26,12 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
         <I18nProvider>
           <ThemeRegistry>
             <RootContextProvider>
-              <Header user={user} />
+              <UIBoundary>
+                <Header user={user} />
+                <Modal />
+                <Snackbar />
+              </UIBoundary>
               <Main>{children}</Main>
-              <Modal />
-              <Snackbar />
             </RootContextProvider>
           </ThemeRegistry>
         </I18nProvider>

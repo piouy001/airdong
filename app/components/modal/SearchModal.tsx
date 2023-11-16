@@ -1,5 +1,7 @@
+"use client";
+
 import styled from "@emotion/styled";
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import { formatISO } from "date-fns";
 import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";

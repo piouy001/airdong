@@ -1,5 +1,6 @@
+"use client";
+
 import styled from "@emotion/styled";
-import { Typography } from "@mui/material";
 import BaseImage from "next/image";
 import React from "react";
 

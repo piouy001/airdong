@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "@emotion/styled";
 import { Avatar, Typography } from "@mui/material";
 import React from "react";

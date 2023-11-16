@@ -1,3 +1,5 @@
+"use client";
+
 import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Dialog, IconButton, Typography, useMediaQuery } from "@mui/material";

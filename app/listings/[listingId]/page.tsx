@@ -1,6 +1,7 @@
 import React from "react";
 
 import EmptySection from "components/EmptySection";
+import UIBoundary from "components/UIBoundary";
 import ListingSection from "components/listings/ListingSection";
 import { getCurrentUser } from "utils/auth";
 import { getListingById } from "utils/listings";
@@ -17,9 +18,18 @@ const ListingScreen = async ({ params }: Props) => {
   const user = await getCurrentUser();
   const reservations = await getReservations(params);
 
-  if (!listing) return <EmptySection />;
+  if (!listing)
+    return (
+      <UIBoundary>
+        <EmptySection />
+      </UIBoundary>
+    );
 
-  return <ListingSection listing={listing} user={user} reservations={reservations} />;
+  return (
+    <UIBoundary>
+      <ListingSection listing={listing} user={user} reservations={reservations} />
+    </UIBoundary>
+  );
 };
 
 export default ListingScreen;

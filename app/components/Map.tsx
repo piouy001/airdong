@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "@emotion/styled";
 import L from "leaflet";
 import marketIcon2x from "leaflet/dist/images/marker-icon-2x.png";
