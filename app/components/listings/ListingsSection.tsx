@@ -1,17 +1,17 @@
 "use client";
 
 import styled from "@emotion/styled";
-import { Listing } from "@prisma/client";
 import React from "react";
 
 import { Devices } from "styles/breakpoints";
+import { SafeListing } from "types/listing";
 import { SafeUser } from "types/user";
 
 import ListingCard from "./ListingCard";
 
 interface Props {
   user: SafeUser | null;
-  listings: Listing[];
+  listings: SafeListing[];
 }
 
 const ListingsSection = ({ user, listings }: Props): React.ReactNode => (

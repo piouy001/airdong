@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Button, Typography } from "@mui/material";
-import { Listing, Reservation } from "@prisma/client";
+import { Reservation } from "@prisma/client";
 import { format } from "date-fns";
 import BaseImage from "next/image";
 import { useRouter } from "next/navigation";
@@ -10,10 +10,11 @@ import { useTranslation } from "react-i18next";
 import FavoriteButton from "components/FavoriteButton";
 import useCountries from "hooks/useCountries";
 import { FontWeight } from "styles/typography";
+import { SafeListing } from "types/listing";
 import { SafeUser } from "types/user";
 
 interface Props {
-  data: Listing;
+  data: SafeListing;
   reservation?: Reservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
@@ -42,6 +43,10 @@ const ListingCard = ({
     return data.price;
   }, [reservation, data.price]);
 
+  const handleClick = () => {
+    router.push(`listings/${data.id}`);
+  };
+
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
@@ -63,7 +68,7 @@ const ListingCard = ({
   }, [reservation]);
 
   return (
-    <Card>
+    <Card onClick={handleClick}>
       <Content>
         <ImageContainer>
           <Image fill src={data.imageSrc} alt="list-image" />

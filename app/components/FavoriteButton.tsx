@@ -13,7 +13,6 @@ interface Props {
 }
 
 const FavoriteButton = ({ listingId, user }: Props): React.ReactNode => {
-  console.log(listingId, user?.favoriteIds);
   const { hasFavorited, toggleFavorite } = useFavorite({ listingId, user });
   const { palette } = useTheme();
 
