@@ -5,7 +5,7 @@ import ListingsSection from "components/listings/ListingsSection";
 import { getCurrentUser } from "utils/auth";
 import { getListings } from "utils/listings";
 
-const Home = async () => {
+const HomeScreen = async () => {
   const listings = await getListings();
   const user = await getCurrentUser();
   const isEmpty = listings.length === 0;
@@ -14,4 +14,4 @@ const Home = async () => {
   return <ListingsSection user={user} listings={listings} />;
 };
 
-export default Home;
+export default HomeScreen;

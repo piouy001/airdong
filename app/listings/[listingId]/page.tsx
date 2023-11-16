@@ -12,7 +12,7 @@ interface Props {
   };
 }
 
-const Listing = async ({ params }: Props) => {
+const ListingScreen = async ({ params }: Props) => {
   const listing = await getListingById(params);
   const user = await getCurrentUser();
   const reservations = await getReservations(params);
@@ -22,4 +22,4 @@ const Listing = async ({ params }: Props) => {
   return <ListingSection listing={listing} user={user} reservations={reservations} />;
 };
 
-export default Listing;
+export default ListingScreen;
