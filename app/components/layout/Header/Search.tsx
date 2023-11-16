@@ -4,6 +4,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { IoSearch } from "react-icons/io5";
 
+import SearchModal from "components/modal/SearchModal";
+import { useModal } from "contexts/ModalContext";
 import BoxShadows from "styles/boxShadows";
 import { Devices } from "styles/breakpoints";
 import Transitions from "styles/transitions";
@@ -11,6 +13,7 @@ import { FontWeight } from "styles/typography";
 
 const Search = (): React.ReactNode => {
   const { t } = useTranslation();
+  const { openModal } = useModal();
 
   const list = [
     { label: t("header.search.anywhere"), isAccent: true },
@@ -18,7 +21,11 @@ const Search = (): React.ReactNode => {
     { label: t("header.search.guests"), hasIcon: true },
   ];
 
-  const handleClick = () => {};
+  const handleClick = () => {
+    openModal({
+      content: <SearchModal />,
+    });
+  };
 
   return (
     <Container onClick={handleClick}>

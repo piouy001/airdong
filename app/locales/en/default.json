@@ -129,5 +129,12 @@
   "properties.delete.success": "Listings deleted",
   "properties.delete.error": "Failed deleted. Please try again.",
   "properties.delete.label": "Delete properties",
-  "properties.main.description": "List of your properties"
+  "properties.main.description": "List of your properties",
+  "search.header.title": "Filter",
+  "search.main.title": "Where do you want to go?",
+  "search.main.description": "Find the perfect location!",
+  "search.date.title": "When do you plan to go?",
+  "search.date.description": "Make sure everyone is free!",
+  "search.info.title": "More information",
+  "search.info.description": "Find your perfect place!"
 }

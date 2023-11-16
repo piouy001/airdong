@@ -10,9 +10,9 @@ import { Range } from "react-date-range";
 import { useTranslation } from "react-i18next";
 import { IoPersonSharp } from "react-icons/io5";
 
+import Map from "components/Map";
 import { categories } from "components/layout/Header/Categories";
 import LoginModal from "components/modal/LoginModal";
-import Map from "components/rent/Map";
 import { TRIPS_URL } from "constants/URLConstant";
 import { useModal } from "contexts/ModalContext";
 import { useSnackbar } from "contexts/SnackbarContext";
