@@ -14,6 +14,7 @@ const HomeScreen = async ({ searchParams }: Props) => {
   const listings = await getListings(searchParams);
   const user = await getCurrentUser();
   const isEmpty = listings.length === 0;
+
   if (isEmpty)
     return (
       <UIBoundary>

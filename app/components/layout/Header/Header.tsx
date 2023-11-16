@@ -3,6 +3,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 
+import BoxShadows from "styles/boxShadows";
 import { Devices } from "styles/breakpoints";
 import { SafeUser } from "types/user";
 
@@ -32,6 +33,7 @@ const Container = styled.header`
   display: flex;
   flex-direction: column;
   width: 100%;
+  box-shadow: ${BoxShadows.Primary};
 `;
 const Content = styled.div`
   display: flex;
@@ -45,7 +47,7 @@ const Content = styled.div`
   @media ${Devices.Desktop} {
     height: 80px;
     padding-inline: 40px;
-    /* border: 1px solid ${({ theme }) => theme.palette.divider}; */
+    border: 1px solid ${({ theme }) => theme.palette.divider};
   }
 `;
 

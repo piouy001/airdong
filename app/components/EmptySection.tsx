@@ -31,7 +31,7 @@ const EmptySection = ({ titleKey, descriptionKey, showReset }: Props): React.Rea
       <Heading title={title} description={description} />
       {showReset && (
         <ResetButton variant="outlined" size="large" color="secondary" onClick={handleReset}>
-          Remove all filters
+          {t("main.filter.reset")}
         </ResetButton>
       )}
     </Container>
