@@ -101,5 +101,10 @@
   "listings.card.night": "night",
   "listings.favorite.save": "Saved to wishlists",
   "listings.favorite.remove": "Removed to wishlists",
-  "listings.favorite.error": "Failed. Please try again."
+  "listings.favorite.error": "Failed. Please try again.",
+  "listings.listing.hosted": "Hosted by {{host}}",
+  "listings.reservation.success": "Successfully reserved.",
+  "listings.reservation.error": "Reserved failed. Please check again.",
+  "listings.reservation.total": "Total",
+  "listings.reservation.label": "Reserve"
 }

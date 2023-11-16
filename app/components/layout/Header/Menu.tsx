@@ -183,6 +183,7 @@ const MenuList = styled.div`
   position: absolute;
   right: 0;
   top: 100%;
+  z-index: 1;
   width: 240px;
   margin-block-start: 8px;
   padding-block: 12px;

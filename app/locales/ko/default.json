@@ -101,5 +101,10 @@
   "listings.card.night": "박",
   "listings.favorite.save": "위시리스트에 저장됨",
   "listings.favorite.remove": "위시리스트에서 제거됨",
-  "listings.favorite.error": "실패했습니다. 다시 한 번 시도해주세요."
+  "listings.favorite.error": "실패했습니다. 다시 한 번 시도해주세요.",
+  "listings.listing.hosted": "{{host}}에 의해 작성됨",
+  "listings.reservation.success": "예약되었습니다.",
+  "listings.reservation.error": "예약에 실패했습니다.",
+  "listings.reservation.total": "총",
+  "listings.reservation.label": "예약하기"
 }

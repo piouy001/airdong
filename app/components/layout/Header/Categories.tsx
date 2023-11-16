@@ -22,6 +22,7 @@ import { IoDiamond } from "react-icons/io5";
 import { MdOutlineVilla } from "react-icons/md";
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 
+import { Devices } from "styles/breakpoints";
 import Transitions from "styles/transitions";
 import { FontWeight } from "styles/typography";
 
@@ -141,8 +142,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 40px;
-  padding-block-start: 16px;
+  padding-inline: 24px;
+  padding-block-start: 8px;
   background: ${({ theme }) => theme.palette.background.default};
   overflow-x: auto;
   gap: 16px;
@@ -152,6 +153,11 @@ const Container = styled.div`
   ::-webkit-scrollbar-thumb {
     background: #ccc;
     border-radius: 8px;
+  }
+
+  @media ${Devices.Desktop} {
+    padding-inline: 40px;
+    padding-block-start: 16px;
   }
 `;
 const Item = styled.div<{ $isSelected: boolean }>`

@@ -21,8 +21,13 @@ const ListingsSection = ({ user, listings }: Props): React.ReactNode => (
 );
 
 const Container = styled.div`
-  padding-inline: 40px;
-  padding-block-start: 24px;
+  padding-inline: 24px;
+  padding-block-start: 16px;
+  
+  @media ${Devices.Desktop} {
+    padding-inline: 40px;
+    padding-block-start: 24px;
+  }
 `;
 const List = styled.div`
   display: grid;
