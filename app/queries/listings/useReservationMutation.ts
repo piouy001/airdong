@@ -15,10 +15,10 @@ const fetch = (
   },
 ) => axios.post(url, arg);
 
-const useReservationMutate = () => {
-  const mutate = useSWRMutation("/api/reservations", fetch);
+const useReservationMutation = () => {
+  const mutation = useSWRMutation("/api/reservations", fetch);
 
-  return mutate;
+  return mutation;
 };
 
-export default useReservationMutate;
+export default useReservationMutation;

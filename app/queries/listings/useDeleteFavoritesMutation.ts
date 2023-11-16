@@ -12,10 +12,10 @@ const fetch = (
   },
 ) => axios.delete(`${url}/${arg.listingId}`);
 
-const useUnFavoritesMutate = () => {
-  const mutate = useSWRMutation("/api/favorites", fetch);
+const useDeleteFavoritesMutation = () => {
+  const mutation = useSWRMutation("/api/favorites", fetch);
 
-  return mutate;
+  return mutation;
 };
 
-export default useUnFavoritesMutate;
+export default useDeleteFavoritesMutation;

@@ -16,7 +16,7 @@ import PriceStep from "components/rent/PricesStep";
 import { useModal } from "contexts/ModalContext";
 import { useSnackbar } from "contexts/SnackbarContext";
 import { CountryType } from "hooks/useCountries";
-import useListingsMutate from "queries/listings/useListingsMutate";
+import useListingsMutation from "queries/listings/useListingsMutation";
 import { rentSchema } from "utils/validationSchema";
 
 import { ButtonContainer as BaseButtonContainer, Container, Content } from "./SignUpModal";
@@ -33,7 +33,7 @@ enum Steps {
 const RentModal = (): React.ReactNode => {
   const { t } = useTranslation();
   const [step, setStep] = useState(Steps.Category);
-  const mutate = useListingsMutate();
+  const mutation = useListingsMutation();
   const router = useRouter();
   const { closeModal } = useModal();
   const { openSnackbar } = useSnackbar();
@@ -62,26 +62,26 @@ const RentModal = (): React.ReactNode => {
     validationSchema: rentSchema,
     validateOnMount: true,
     onSubmit: data => {
-      mutate.trigger(data)
-      .then(() => {
-        openSnackbar({
-          snackbarType: "success",
-          text: t("listings.create.success"),
+      mutation
+        .trigger(data)
+        .then(() => {
+          openSnackbar({
+            snackbarType: "success",
+            text: t("listings.create.success"),
+          });
+          router.refresh();
+          formik.resetForm();
+          setStep(Steps.Category);
+          closeModal();
+        })
+        .catch(() => {
+          openSnackbar({
+            snackbarType: "error",
+            text: t("listings.create.error"),
+          });
         });
-        router.refresh();
-        formik.resetForm();
-        setStep(Steps.Category);
-        closeModal();
-      })
-      .catch(() => {
-        openSnackbar({
-          snackbarType: "error",
-          text: t("listings.create.error"),
-        });
-      })
     },
   });
-
 
   const getDisabled = () => {
     if (step === Steps.Description) return !formik.values.title || !formik.values.description;
@@ -169,7 +169,7 @@ const RentModal = (): React.ReactNode => {
             </Button>
           )}
           <LoadingButton
-            loading={mutate.isMutating}
+            loading={mutation.isMutating}
             disabled={getDisabled()}
             variant="contained"
             size="large"

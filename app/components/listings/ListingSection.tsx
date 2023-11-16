@@ -13,10 +13,11 @@ import { IoPersonSharp } from "react-icons/io5";
 import { categories } from "components/layout/Header/Categories";
 import LoginModal from "components/modal/LoginModal";
 import Map from "components/rent/Map";
+import { TRIPS_URL } from "constants/URLConstant";
 import { useModal } from "contexts/ModalContext";
 import { useSnackbar } from "contexts/SnackbarContext";
 import useCountries from "hooks/useCountries";
-import useReservationMutate from "queries/listings/useReservationMutate";
+import useReservationMutation from "queries/listings/useReservationMutation";
 import { Devices } from "styles/breakpoints";
 import { FontWeight } from "styles/typography";
 import { SafeListing } from "types/listing";
@@ -46,7 +47,7 @@ const ListingSection = ({ listing, user, reservations = [] }: Props): React.Reac
   const { openSnackbar } = useSnackbar();
   const router = useRouter();
   const { getByValue } = useCountries();
-  const mutate = useReservationMutate();
+  const mutation = useReservationMutation();
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
   const [dateRange, setDateRange] = useState<Range>(initialDateRange);
@@ -61,7 +62,7 @@ const ListingSection = ({ listing, user, reservations = [] }: Props): React.Reac
       });
     if (!dateRange.startDate || !dateRange.endDate) return;
     setIsLoading(true);
-    mutate
+    mutation
       .trigger({ totalPrice, startDate: dateRange.startDate, endDate: dateRange.endDate, listingId: listing.id })
       .then(() => {
         openSnackbar({
@@ -69,7 +70,7 @@ const ListingSection = ({ listing, user, reservations = [] }: Props): React.Reac
           text: t("listings.reservation.success"),
         });
         setDateRange(initialDateRange);
-        router.refresh();
+        router.push(TRIPS_URL);
       })
       .catch(error => {
         openSnackbar({
@@ -80,7 +81,7 @@ const ListingSection = ({ listing, user, reservations = [] }: Props): React.Reac
       .finally(() => {
         setIsLoading(false);
       });
-  }, [router, openModal, openSnackbar, user, dateRange, listing, mutate, totalPrice, t]);
+  }, [router, openModal, openSnackbar, user, dateRange, listing, mutation, totalPrice, t]);
 
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];

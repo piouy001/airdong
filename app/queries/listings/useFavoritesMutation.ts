@@ -12,10 +12,10 @@ const fetch = (
   },
 ) => axios.post(`${url}/${arg.listingId}`);
 
-const useFavoritesMutate = () => {
-  const mutate = useSWRMutation("/api/favorites", fetch);
+const useFavoritesMutation = () => {
+  const mutation = useSWRMutation("/api/favorites", fetch);
 
-  return mutate;
+  return mutation;
 };
 
-export default useFavoritesMutate;
+export default useFavoritesMutation;

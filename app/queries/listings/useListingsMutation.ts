@@ -22,10 +22,10 @@ const create = (
   },
 ) => axios.post(url, arg);
 
-const useListingsMutate = () => {
-  const mutate = useSWRMutation("/api/listings", create);
+const useListingsMutation = () => {
+  const mutation = useSWRMutation("/api/listings", create);
 
-  return mutate;
+  return mutation;
 };
 
-export default useListingsMutate;
+export default useListingsMutation;

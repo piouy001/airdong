@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
@@ -6,10 +5,10 @@ import { useTranslation } from "react-i18next";
 import LoginModal from "components/modal/LoginModal";
 import { useModal } from "contexts/ModalContext";
 import { useSnackbar } from "contexts/SnackbarContext";
-import useFavoritesMutate from "queries/listings/useFavoritesMutate";
+import useFavoritesMutation from "queries/listings/useFavoritesMutation";
 import { SafeUser } from "types/user";
 
-import useUnFavoritesMutate from "../queries/listings/useUnFavoritesMutate";
+import useDeleteFavoritesMutation from "../queries/listings/useDeleteFavoritesMutation";
 
 interface Props {
   listingId: string;
@@ -21,8 +20,8 @@ const useFavorite = ({ listingId, user }: Props) => {
   const { openModal } = useModal();
   const { openSnackbar } = useSnackbar();
   const { t } = useTranslation();
-  const favoritesMutate = useFavoritesMutate();
-  const unFavoritesMutate = useUnFavoritesMutate();
+  const favoritesMutation = useFavoritesMutation();
+  const deleteFavoritesMutation = useDeleteFavoritesMutation();
 
   const hasFavorited = useMemo(() => {
     const list = user?.favoriteIds ?? [];
@@ -42,13 +41,13 @@ const useFavorite = ({ listingId, user }: Props) => {
 
       try {
         if (hasFavorited) {
-          await unFavoritesMutate.trigger({ listingId });
+          await deleteFavoritesMutation.trigger({ listingId });
           openSnackbar({
             snackbarType: "success",
             text: t("listings.favorite.remove"),
           });
         } else {
-          await favoritesMutate.trigger({ listingId });
+          await favoritesMutation.trigger({ listingId });
           openSnackbar({
             snackbarType: "success",
             text: t("listings.favorite.save"),

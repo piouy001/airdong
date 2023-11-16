@@ -106,5 +106,13 @@
   "listings.reservation.success": "Successfully reserved.",
   "listings.reservation.error": "Reserved failed. Please check again.",
   "listings.reservation.total": "Total",
-  "listings.reservation.label": "Reserve"
+  "listings.reservation.label": "Reserve",
+  "trips.userempty.title": "Unauthorized",
+  "trips.userempty.description": "Please login",
+  "trips.reservationsempty.title": "No trips found",
+  "trips.reservationsempty.description": "Looks like you haven't reserved any trips",
+  "trips.main.description": "Where yor've been and where yor're going",
+  "trips.delete.success": "Reservation cancelled",
+  "trips.delete.error": "Failed cancelled. Please try again.",
+  "trips.delete.label": "Cancel reservation"
 }

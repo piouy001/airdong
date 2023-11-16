@@ -106,5 +106,13 @@
   "listings.reservation.success": "예약되었습니다.",
   "listings.reservation.error": "예약에 실패했습니다.",
   "listings.reservation.total": "총",
-  "listings.reservation.label": "예약하기"
+  "listings.reservation.label": "예약하기",
+  "trips.userempty.title": "인증되지 않은 유저입니다.",
+  "trips.userempty.description": "로그인 해주세요.",
+  "trips.reservationsempty.title": "예약을 찾을 수 없습니다.",
+  "trips.reservationsempty.description": "예약된 여행리스트가 없습니다.",
+  "trips.main.description": "당신은 어디에 있었고 어디로 가는가?",
+  "trips.delete.success": "예약이 취소되었습니다.",
+  "trips.delete.error": "예약 취소에 실패하였습니다. 다시 한 번 시도해주세요.",
+  "trips.delete.label": "예약 취소"
 }

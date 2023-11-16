@@ -13,7 +13,7 @@ import ModalLayout from "components/modal/ModalLayout";
 import { getEmailErrorMessages, getNameErrorMessages, getPasswordErrorMessages } from "constants/errorMessage";
 import { useModal } from "contexts/ModalContext";
 import { useSnackbar } from "contexts/SnackbarContext";
-import useSignUpMutate from "queries/auth/useSignUpMutate";
+import useSignUpMutation from "queries/auth/useSignUpMutation";
 import { FontWeight } from "styles/typography";
 import { emailSchema, nameSchema, passwordSchema } from "utils/validationSchema";
 
@@ -27,7 +27,7 @@ const signUpFormSchema = yup.object({
 
 const SignUpModal = (): React.ReactNode => {
   const { t } = useTranslation();
-  const mutate = useSignUpMutate();
+  const mutation = useSignUpMutation();
   const { closeModal, openModal } = useModal();
   const { openSnackbar } = useSnackbar();
   const formik = useFormik<{
@@ -43,7 +43,7 @@ const SignUpModal = (): React.ReactNode => {
     validationSchema: signUpFormSchema,
     validateOnMount: true,
     onSubmit: data => {
-      mutate
+      mutation
         .trigger(data)
         .then(() => {
           openSnackbar({
@@ -126,7 +126,7 @@ const SignUpModal = (): React.ReactNode => {
         </Content>
         <ButtonContainer>
           <LoadingButton
-            loading={mutate.isMutating}
+            loading={mutation.isMutating}
             variant="contained"
             size="large"
             disabled={!formik.isValid}

@@ -12,11 +12,12 @@ import { LISTINGS_URL } from "constants/URLConstant";
 import useCountries from "hooks/useCountries";
 import { FontWeight } from "styles/typography";
 import { SafeListing } from "types/listing";
+import { SafeReservation } from "types/reservation";
 import { SafeUser } from "types/user";
 
 interface Props {
   data: SafeListing;
-  reservation?: Reservation;
+  reservation?: SafeReservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
   actionId?: string;

@@ -4,10 +4,10 @@ import useSWRMutation from "swr/mutation";
 const signUp = (url: string, { arg }: { arg: { email: string; name: string; password: string } }) =>
   axios.post(url, arg);
 
-const useSignUpMutate = () => {
-  const mutate = useSWRMutation("/api/signUp", signUp);
+const useSignUpMutation = () => {
+  const mutation = useSWRMutation("/api/signUp", signUp);
 
-  return mutate;
+  return mutation;
 };
 
-export default useSignUpMutate;
+export default useSignUpMutation;
