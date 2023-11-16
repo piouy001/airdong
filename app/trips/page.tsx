@@ -5,8 +5,6 @@ import TripsSection from "components/trips/TripsSection";
 import { getCurrentUser } from "utils/auth";
 import { getReservations } from "utils/reservations";
 
-interface Props {}
-
 const TripsScreen = async () => {
   const user = await getCurrentUser();
 

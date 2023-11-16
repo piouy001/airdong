@@ -51,7 +51,6 @@ const SignUpModal = (): React.ReactNode => {
             text: t("signup.success.text"),
           });
 
-          closeModal();
           navigateToLoginScreen();
         })
         .catch(() => {

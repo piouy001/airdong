@@ -5,9 +5,9 @@
   "header.menu.yourhome": "당신의 공간을 에어동하세요.",
   "header.menu.signup": "회원가입",
   "header.menu.login": "로그인",
-  "header.menu.trips": "여행",
-  "header.menu.wishlists": "위시리스트",
-  "header.menu.reservations": "예약",
+  "header.menu.trips": "여행예정",
+  "header.menu.favorites": "관심",
+  "header.menu.reservations": "예약자",
   "header.menu.properties": "숙소",
   "header.menu.myhome": "당신의 공간을 에어동하세요.",
   "header.menu.logout": "로그아웃",
@@ -114,5 +114,11 @@
   "trips.main.description": "당신은 어디에 있었고 어디로 가는가?",
   "trips.delete.success": "예약이 취소되었습니다.",
   "trips.delete.error": "예약 취소에 실패하였습니다. 다시 한 번 시도해주세요.",
-  "trips.delete.label": "예약 취소"
+  "trips.delete.label": "예약 취소",
+  "reservations.userempty.title": "인증되지 않은 유저입니다.",
+  "reservations.userempty.description": "로그인 해주세요.",
+  "reservations.reservationsempty.title": "예약을 찾을 수 없습니다.",
+  "reservations.reservationsempty.description": "예약된 여행리스트가 없습니다.",
+  "reservations.main.description": "귀하의 숙소에 대한 예약",
+  "reservations.delete.label": "게스트 예약취소"
 }
