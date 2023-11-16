@@ -6,7 +6,7 @@
   "header.menu.signup": "Sign Up",
   "header.menu.login": "Login",
   "header.menu.trips": "Trips",
-  "header.menu.favorites": "favorites",
+  "header.menu.favorites": "Favorite",
   "header.menu.reservations": "Reservations",
   "header.menu.properties": "Properties",
   "header.menu.myhome": "Airdong my home",
@@ -120,5 +120,14 @@
   "reservations.reservationsempty.title": "No trips found",
   "reservations.reservationsempty.description": "Looks like you haven't reserved any trips",
   "reservations.main.description": "Bookings on your properties",
-  "reservations.delete.label": "Cancel guest reservation"
+  "reservations.delete.label": "Cancel guest reservation",
+  "favorite.empty.title": "No favorites found",
+  "favorite.empty.description": "Looks like you have no favorite lisitings",
+  "favorite.main.description": "List of places you have favorited!",
+  "properties.listingsempty.title": "No properties found",
+  "properties.listingsempty.description": "Looks like you have no properties.",
+  "properties.delete.success": "Listings deleted",
+  "properties.delete.error": "Failed deleted. Please try again.",
+  "properties.delete.label": "Delete properties",
+  "properties.main.description": "List of your properties"
 }

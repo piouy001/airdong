@@ -11,7 +11,7 @@ import LanguageModal from "components/modal/LanguageModal";
 import LoginModal from "components/modal/LoginModal";
 import RentModal from "components/modal/RentModal";
 import SignUpModal from "components/modal/SignUpModal";
-import { FAVORITES_URL, RESERVATIONS_URL, TRIPS_URL } from "constants/URLConstant";
+import { FAVORITES_URL, PROPERTIES_URL, RESERVATIONS_URL, TRIPS_URL } from "constants/URLConstant";
 import { useModal } from "contexts/ModalContext";
 import BoxShadows from "styles/boxShadows";
 import { Devices } from "styles/breakpoints";
@@ -84,7 +84,13 @@ const Menu = ({ user }: Props): React.ReactNode => {
           },
           isAccent: true,
         },
-        { label: t("header.menu.properties"), onClick: () => {}, isAccent: true },
+        {
+          label: t("header.menu.properties"),
+          onClick: () => {
+            router.push(PROPERTIES_URL);
+          },
+          isAccent: true,
+        },
         { label: t("header.menu.myhome"), onClick: handleBannerClick, isAccent: true },
         {
           label: t("header.menu.logout"),

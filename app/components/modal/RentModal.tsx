@@ -84,6 +84,7 @@ const RentModal = (): React.ReactNode => {
   });
 
   const getDisabled = () => {
+    if (step === Steps.Location) return !formik.values.location;
     if (step === Steps.Description) return !formik.values.title || !formik.values.description;
     if (step === Steps.Price) return !formik.values.price || isNaN(formik.values.price);
 
