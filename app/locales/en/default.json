@@ -136,5 +136,8 @@
   "search.date.title": "When do you plan to go?",
   "search.date.description": "Make sure everyone is free!",
   "search.info.title": "More information",
-  "search.info.description": "Find your perfect place!"
+  "search.info.description": "Find your perfect place!",
+  "error.main.title": "Uh Oh",
+  "error.main.description": "Something went wrong!",
+  "main.filter.reset": "Remove all filters"
 }

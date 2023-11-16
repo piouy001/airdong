@@ -2,12 +2,15 @@
 
 import styled from "@emotion/styled";
 import { Avatar, Typography } from "@mui/material";
-import React from "react";
+import { differenceInDays } from "date-fns";
+import { useSearchParams } from "next/navigation";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { IoSearch } from "react-icons/io5";
 
 import SearchModal from "components/modal/SearchModal";
 import { useModal } from "contexts/ModalContext";
+import useCountries from "hooks/useCountries";
 import BoxShadows from "styles/boxShadows";
 import { Devices } from "styles/breakpoints";
 import Transitions from "styles/transitions";
@@ -16,11 +19,46 @@ import { FontWeight } from "styles/typography";
 const Search = (): React.ReactNode => {
   const { t } = useTranslation();
   const { openModal } = useModal();
+  const params = useSearchParams();
+  const { getByValue } = useCountries();
+
+  const locationValue = params?.get("locationValue");
+  const startDate = params?.get("startDate");
+  const endDate = params?.get("endDate");
+  const guestCount = params?.get("guestCount");
+
+  const locationLabel = useMemo(() => {
+    if (locationValue) return getByValue(locationValue)?.label;
+
+    return t("header.search.anywhere");
+  }, [t, getByValue, locationValue]);
+
+  const durationLabel = useMemo(() => {
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      let diff = differenceInDays(end, start);
+
+      if (diff === 0) {
+        diff = 1;
+      }
+
+      return `${diff} Days`;
+    }
+
+    return t("header.search.anyweek");
+  }, [t, startDate, endDate]);
+
+  const guestLabel = useMemo(() => {
+    if (guestCount) return `${guestCount} ${t("rent.info.guest.title")}`;
+
+    return t("header.search.guests");
+  }, [t, guestCount]);
 
   const list = [
-    { label: t("header.search.anywhere"), isAccent: true },
-    { label: t("header.search.anyweek"), isAccent: true },
-    { label: t("header.search.guests"), hasIcon: true },
+    { label: locationLabel, isAccent: true },
+    { label: durationLabel, isAccent: true },
+    { label: guestLabel, hasIcon: true },
   ];
 
   const handleClick = () => {
@@ -51,10 +89,7 @@ const Search = (): React.ReactNode => {
         <IoSearch size={20} />
         <MobileLabels>
           <MobileLabel variant="body2" fontWeight={FontWeight.SemiBold}>
-            {t("header.search.anywhere")}
-          </MobileLabel>
-          <MobileLabel variant="subtitle1" color="text.secondary">
-            {t("header.search.anyweek")} • {t("header.search.guests")}
+            {locationLabel}
           </MobileLabel>
         </MobileLabels>
       </MobileItem>

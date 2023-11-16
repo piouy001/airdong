@@ -136,5 +136,8 @@
   "search.date.title": "언제 갈 계획인가요?",
   "search.date.description": "여행 일정을 선택해보세요!",
   "search.info.title": "추가 정보",
-  "search.info.description": "완벽한 장소를 찾아보세요!"
+  "search.info.description": "완벽한 장소를 찾아보세요!",
+  "error.main.title": "아이고",
+  "error.main.description": "문제가 발생했습니다.",
+  "main.filter.reset": "필터를 빼보세요!"
 }

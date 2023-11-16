@@ -19,7 +19,7 @@ const Snackbar = (): React.ReactNode => {
   return (
     <MuiSnackbar
       open={snackbar.open}
-      autoHideDuration={1500}
+      autoHideDuration={1000}
       onClose={handleClose}
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
     >
