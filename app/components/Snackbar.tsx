@@ -14,6 +14,8 @@ const Snackbar = (): React.ReactNode => {
     snackbar.handleClose?.();
   };
 
+  if (!snackbar.open) return;
+
   return (
     <MuiSnackbar
       open={snackbar.open}

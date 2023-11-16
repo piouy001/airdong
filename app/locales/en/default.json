@@ -98,5 +98,8 @@
   "listings.create.error": "Created failed. Please check again.",
   "section.empty.title": "No exact matchs",
   "section.empty.description": "Try changing or removing some of your filters",
-  "listings.card.night": "night"
+  "listings.card.night": "night",
+  "listings.favorite.save": "Saved to wishlists",
+  "listings.favorite.remove": "Removed to wishlists",
+  "listings.favorite.error": "Failed. Please try again."
 }

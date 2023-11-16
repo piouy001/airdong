@@ -88,8 +88,14 @@ const ListingCard = ({
           )}
         </Price>
         {onAction && actionLabel && (
-          <Button disabled={disabled} size="small" onClick={handleCancel}>
-            {actionLabel}a
+          <Button
+            variant="contained"
+            disabled={disabled}
+            size="small"
+            onClick={handleCancel}
+            sx={{ marginBlockStart: "8px" }}
+          >
+            {actionLabel}
           </Button>
         )}
       </Content>

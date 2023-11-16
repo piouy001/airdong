@@ -3,6 +3,7 @@ import { useTheme } from "@mui/material";
 import React from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
+import useFavorite from "hooks/useFavorite";
 import Transitions from "styles/transitions";
 import { SafeUser } from "types/user";
 
@@ -12,13 +13,12 @@ interface Props {
 }
 
 const FavoriteButton = ({ listingId, user }: Props): React.ReactNode => {
-  const hasFavorited = false;
+  console.log(listingId, user?.favoriteIds);
+  const { hasFavorited, toggleFavorite } = useFavorite({ listingId, user });
   const { palette } = useTheme();
 
-  const handleToggle = () => {};
-
   return (
-    <Button onClick={handleToggle}>
+    <Button onClick={toggleFavorite}>
       <IconContainer>
         <AiOutlineHeart size={28} color={palette.background.default} />
       </IconContainer>
