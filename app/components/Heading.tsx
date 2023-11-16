@@ -9,7 +9,7 @@ interface Props {
   description: string;
 }
 
-const Header = ({ title, description }: Props): React.ReactNode => (
+const Heading = ({ title, description }: Props): React.ReactNode => (
   <>
     <Title variant="h3">{title}</Title>
     <Description variant="h6" color="text.secondary" fontWeight={FontWeight.Regular}>
@@ -25,4 +25,4 @@ const Description = styled(Typography)`
   margin-block-end: 24px;
 `;
 
-export default Header;
+export default Heading;

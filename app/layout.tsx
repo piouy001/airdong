@@ -27,7 +27,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
             <RootContextProvider>
               <Header user={user} />
               <Categories />
-              {children}
+              <main>{children}</main>
               <Modal />
               <Snackbar />
             </RootContextProvider>

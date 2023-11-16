@@ -22,7 +22,7 @@ const Header = ({ user }: Props): React.ReactNode => (
   </Container>
 );
 
-const Container = styled.div`
+const Container = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;

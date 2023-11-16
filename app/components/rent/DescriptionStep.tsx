@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import Header from "./Header";
+import Heading from "../Heading";
 
 interface Props {
   title: string;
@@ -19,7 +19,7 @@ const DescriptionStep = ({ title, description, onChange }: Props): React.ReactNo
   });
   return (
     <>
-      <Header title={t("rent.description.title")} description={t("rent.description.desc")} />
+      <Heading title={t("rent.description.title")} description={t("rent.description.desc")} />
       <Container>
         <TextField
           variant="outlined"

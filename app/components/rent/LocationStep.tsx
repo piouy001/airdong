@@ -7,7 +7,7 @@ import Select from "react-select";
 
 import useCountries, { CountryType } from "hooks/useCountries";
 
-import Header from "./Header";
+import Heading from "../Heading";
 
 interface Props {
   selectedLocation: CountryType | null;
@@ -29,7 +29,7 @@ const LocationStep = ({ selectedLocation, onChange }: Props): React.ReactNode =>
 
   return (
     <>
-      <Header title={t("rent.location.title")} description={t("rent.location.desc")} />
+      <Heading title={t("rent.location.title")} description={t("rent.location.desc")} />
       <Select
         placeholder={t("header.search.anywhere")}
         isClearable

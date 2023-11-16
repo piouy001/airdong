@@ -7,11 +7,11 @@ import { categories } from "components/layout/Header/Categories";
 import { Devices } from "styles/breakpoints";
 import Transitions from "styles/transitions";
 
-import Header from "./Header";
+import Heading from "../Heading";
 
 interface Props {
   selectedCategory?: string;
-  onChange: (name: string, value: string|React.ChangeEvent<any>) => void;
+  onChange: (name: string, value: string | React.ChangeEvent<any>) => void;
 }
 
 const CategoriesStep = ({ selectedCategory, onChange }: Props): React.ReactNode => {
@@ -19,7 +19,7 @@ const CategoriesStep = ({ selectedCategory, onChange }: Props): React.ReactNode 
 
   return (
     <>
-      <Header title={t("rent.category.title")} description={t("rent.category.desc")} />
+      <Heading title={t("rent.category.title")} description={t("rent.category.desc")} />
       <Categories>
         {categories.map(item => (
           <Category

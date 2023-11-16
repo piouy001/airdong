@@ -95,5 +95,8 @@
   "rent.price.label": "Price",
   "rent.price.error": "Price is required",
   "listings.create.success": "your place has been successfully created.",
-  "listings.create.error": "Created failed. Please check again."
+  "listings.create.error": "Created failed. Please check again.",
+  "section.empty.title": "No exact matchs",
+  "section.empty.description": "Try changing or removing some of your filters",
+  "listings.card.night": "night"
 }

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RiMoneyDollarBoxLine } from "react-icons/ri";
 
-import Header from "./Header";
+import Heading from "../Heading";
 
 interface Props {
   price: number;
@@ -16,7 +16,7 @@ const PriceStep = ({ price, onChange }: Props): React.ReactNode => {
   const [touched, setTouched] = useState(false);
   return (
     <>
-      <Header title={t("rent.price.title")} description={t("rent.price.subtitle")} />
+      <Heading title={t("rent.price.title")} description={t("rent.price.subtitle")} />
       <TextField
         variant="outlined"
         id="price"

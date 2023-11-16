@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 import Counter from "./Counter";
-import Header from "./Header";
+import Heading from "../Heading";
 
 interface Props {
   data: {
@@ -19,7 +19,7 @@ const InfoStep = ({ data, onChange }: Props): React.ReactNode => {
 
   return (
     <>
-      <Header title={t("rent.info.title")} description={t("rent.info.desc")} />
+      <Heading title={t("rent.info.title")} description={t("rent.info.desc")} />
       {data.map(item => (
         <Counter
           key={item.name}

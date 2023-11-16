@@ -26,66 +26,66 @@ import Transitions from "styles/transitions";
 import { FontWeight } from "styles/typography";
 
 export const categories = [
-  { key: "beachs", label: "category.beachs.label", description: "category.beachs.desc", icon: TbBeach },
+  { key: "Beachs", label: "category.beachs.label", description: "category.beachs.desc", icon: TbBeach },
   {
-    key: "windmills",
+    key: "Windmills",
     label: "category.windmills.label",
     description: "category.windmills.desc",
     icon: GiWindmill,
   },
   {
-    key: "modern",
+    key: "Modern",
     label: "category.modern.label",
     description: "category.modern.desc",
     icon: MdOutlineVilla,
   },
   {
-    key: "countryside",
+    key: "Countryside",
     label: "category.countryside.label",
     description: "category.countryside.desc",
     icon: TbMountain,
   },
-  { key: "pools", label: "category.pools.label", description: "category.pools.desc", icon: TbPool },
+  { key: "Pools", label: "category.pools.label", description: "category.pools.desc", icon: TbPool },
   {
-    key: "islands",
+    key: "Islands",
     label: "category.islands.label",
     description: "category.islands.desc",
     icon: GiIsland,
   },
-  { key: "lake", label: "category.lake.label", description: "category.lake.desc", icon: GiBoatFishing },
+  { key: "Lake", label: "category.lake.label", description: "category.lake.desc", icon: GiBoatFishing },
   {
-    key: "skiing",
+    key: "Skiing",
     label: "category.skiing.label",
     description: "category.skiing.desc",
     icon: FaSkiing,
   },
   {
-    key: "castles",
+    key: "Castles",
     label: "category.castles.label",
     description: "category.castles.desc",
     icon: GiCastle,
   },
   {
-    key: "camping",
+    key: "Camping",
     label: "category.camping.label",
     description: "category.camping.desc",
     icon: GiForestCamp,
   },
-  { key: "arctic", label: "category.arctic.label", description: "category.arctic.desc", icon: BsSnow },
+  { key: "Arctic", label: "category.arctic.label", description: "category.arctic.desc", icon: BsSnow },
   {
-    key: "cave",
+    key: "Cave",
     label: "category.cave.label",
     description: "category.cave.desc",
     icon: GiCaveEntrance,
   },
   {
-    key: "desert",
+    key: "Desert",
     label: "category.desert.label",
     description: "category.desert.desc",
     icon: GiCactus,
   },
-  { key: "barns", label: "category.barns.label", description: "category.barns.desc", icon: GiBarn },
-  { key: "lux", label: "category.lux.label", description: "category.lux.desc", icon: IoDiamond },
+  { key: "Barns", label: "category.barns.label", description: "category.barns.desc", icon: GiBarn },
+  { key: "Lux", label: "category.lux.label", description: "category.lux.desc", icon: IoDiamond },
 ];
 
 const Categories = (): React.ReactNode => {

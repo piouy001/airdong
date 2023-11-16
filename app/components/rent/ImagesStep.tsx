@@ -8,7 +8,7 @@ import { TbPhotoPlus } from "react-icons/tb";
 
 import Transitions from "styles/transitions";
 
-import Header from "./Header";
+import Heading from "../Heading";
 
 declare global {
   // eslint-disable-next-line vars-on-top, no-var, no-unused-vars
@@ -32,7 +32,7 @@ const ImagesStep = ({ value, onChange }: Props): React.ReactNode => {
 
   return (
     <>
-      <Header title={t("rent.images.title")} description={t("rent.images.desc")} />
+      <Heading title={t("rent.images.title")} description={t("rent.images.desc")} />
       <CldUploadWidget
         onUpload={handleUpload}
         uploadPreset="iqvkpmok"
@@ -46,7 +46,7 @@ const ImagesStep = ({ value, onChange }: Props): React.ReactNode => {
             <Label variant="h4">{t("rent.images.label")}</Label>
             {value && (
               <UploadImage>
-                <Image fill src={value} style={{ objectFit: "cover" }} alt="upload image" />
+                <Image fill src={value} style={{ objectFit: "cover" }} alt="upload-image" />
               </UploadImage>
             )}
           </Item>
