@@ -1,8 +1,8 @@
 "use client";
 
 import styled from "@emotion/styled";
-import { Avatar, Button, Typography } from "@mui/material";
-import { Reservation } from "@prisma/client";
+import { LoadingButton } from "@mui/lab";
+import { Avatar, Typography } from "@mui/material";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
 import React, { useState, useMemo, useCallback, useEffect } from "react";
@@ -20,6 +20,7 @@ import useReservationMutate from "queries/listings/useReservationMutate";
 import { Devices } from "styles/breakpoints";
 import { FontWeight } from "styles/typography";
 import { SafeListing } from "types/listing";
+import { SafeReservation } from "types/reservation";
 import { SafeUser } from "types/user";
 
 import Calendar from "./Calendar";
@@ -36,7 +37,7 @@ interface Props {
     user: SafeUser;
   };
   user: SafeUser | null;
-  reservations?: Reservation[];
+  reservations?: SafeReservation[];
 }
 
 const ListingSection = ({ listing, user, reservations = [] }: Props): React.ReactNode => {
@@ -140,9 +141,9 @@ const ListingSection = ({ listing, user, reservations = [] }: Props): React.Reac
               <Typography variant="h5">$ {totalPrice}</Typography>
             </TotalPrice>
             <ButtonContainer>
-              <Button variant="contained" size="large" fullWidth>
+              <LoadingButton loading={isLoading} variant="contained" size="large" fullWidth onClick={handleReservation}>
                 {t("listings.reservation.label")}
-              </Button>
+              </LoadingButton>
             </ButtonContainer>
           </CalendarContent>
         </CalendarContainer>
