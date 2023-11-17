@@ -156,7 +156,7 @@ const SearchModal = (): React.ReactNode => {
               <Counter
                 key={item.name}
                 name={item.name}
-                title={item.name}
+                title={item.title}
                 subtitle={item.subtitle}
                 value={item.value}
                 onChange={(name: string, value) => {
