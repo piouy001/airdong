@@ -11,13 +11,13 @@
 
 ## 👀기술 스택
 
-Next.js13, React, Typescript, NextAuth, MUI, Emotion, Formik, Yup, SWR, i18n, react-i18next, Prisma, (huskey, gitflow, eslint, prettier)
+Next.js13, React, Typescript, NextAuth, MUI, Emotion, Formik, Yup, SWR, i18n, react-i18next, Prisma, (huskey,  eslint, prettier)
 
 ## 🧱개발 환경구성 및 폴더 구조
 
 ### 개발 환경구성
 
-[개발 환경구성](https://github.com/piouy001/airdong/issues/3)
+[개발 환경구성]([https://github.com/piouy001/airdong/issues/3](https://github.com/piouy001/airdong/issues/4))
 
 ### 폴더 구조
 
