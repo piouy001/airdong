@@ -25,17 +25,67 @@ Next.js13, React, Typescript, NextAuth, MUI, Emotion, Formik, Yup, SWR, i18n, re
 
 ### 레이아웃
 
-[레이아웃](https://github.com/piouy001/airdong/issues/2)
+[로그인, 회원가입 구현](https://github.com/piouy001/airdong/issues/5)
+
+[다국어 처리 구현](https://github.com/piouy001/airdong/issues/6)
+
+[숙소 렌트 구현](https://github.com/piouy001/airdong/issues/7)
+
+[숙소 필터 구현](https://github.com/piouy001/airdong/issues/8)
+
 
 ## 📹유저 시나리오
 
 > 개발시간 순으로 정렬합니다.
 
 ### 메인 페이지(`/`)
+[메인 페이지 구현](https://github.com/piouy001/airdong/issues/9)
 
-[링크 메인 페이지]
+### 숙소 상세페이지(`/listings/[listingId]`)
+[숙소 상세페이지 구현](https://github.com/piouy001/airdong/issues/10)
+
+### 여행 예정목록 페이지 구현(`/trips`)
+[여행 예정목록 페이지 구현](https://github.com/piouy001/airdong/issues/11)
+
+### 관심 목록 페이지 구현(`/favorites`)
+[관심 목록 페이지 구현](https://github.com/piouy001/airdong/issues/12)
+
+### 내 숙소 예약자목록 페이지 구현(`/reservations`)
+[내 숙소 예약자목록 페이지 구현](https://github.com/piouy001/airdong/issues/13)
+
+### 내 숙소 목록 페이지 구현(`/properties`)
+[내 숙소 목록 페이지 구현](https://github.com/piouy001/airdong/issues/14)
 
 
 ## ⚙️실행방법
 
+### package 설치
+
+```
+yarn dev
+```
+
+### .env 세팅
+
+```
+DATABASE_URL=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GITHUB_ID=
+GITHUB_SECRET=
+NEXTAUTH_SECRET=
+```
+
+### DB 세팅
+
+```
+npx prisma db push
+```
+
+### App 실행
+
+`yarn dev`
+
 ## 🕛회고
+1. 이전에는 사용자가 data를 변경했을 때 HTTP요청을 보내고 해당 data의 state상태를 변경해줌으로 바로 변경되는 듯한 UI를 보여주었는데 Server Component를 사용해서 DB정보를 바로 가져오니 요청만 보내면 바로 반영이 되어 좋았다.
+2. app폴더에 page.tsx가 있으면 해당 경로를 토대로 page generate를 하기 때문에 app폴더 하위에 페이지 관련 폴더를 넣을 수 밖에 없는데 이로 인해서 폴더구조가 난잡해진 것 같다.
