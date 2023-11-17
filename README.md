@@ -11,7 +11,7 @@
 
 ## 👀기술 스택
 
-Next13, React, Typescript, NextAuth, MUI, Emotion, Formik, Yup, SWR, i18n, react-i18next, Prisma, (huskey, gitflow, eslint, prettier)
+Next.js13, React, Typescript, NextAuth, MUI, Emotion, Formik, Yup, SWR, i18n, react-i18next, Prisma, (huskey, gitflow, eslint, prettier)
 
 ## 🧱개발 환경구성 및 폴더 구조
 
