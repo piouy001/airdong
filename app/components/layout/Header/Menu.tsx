@@ -21,6 +21,12 @@ import Transitions from "styles/transitions";
 import { FontWeight } from "styles/typography";
 import { SafeUser } from "types/user";
 
+interface Item {
+  label: string;
+  onClick: () => void;
+  isAccent?: boolean;
+  hasDivider?: boolean;
+}
 interface Props {
   user: SafeUser | null;
 }
@@ -58,12 +64,12 @@ const Menu = ({ user }: Props): React.ReactNode => {
     setIsOpen(false);
   };
 
-  const menuList: {
-    label: string;
-    onClick: () => void;
-    isAccent?: boolean;
-    hasDivider?: boolean;
-  }[] = user
+  const handleItemClick = (item: Item) => {
+    handleClose();
+    item.onClick();
+  };
+
+  const menuList: Item[] = user
     ? [
         {
           label: t("header.menu.trips"),
@@ -133,34 +139,36 @@ const Menu = ({ user }: Props): React.ReactNode => {
       <LanguageButton sx={{ width: 40, height: 40, color: "text.primary" }} onClick={handleLanguageClick}>
         <FaEarthAmericas size={16} />
       </LanguageButton>
-      <MenuContainer>
-        <ClickAwayListener onClickAway={handleClose}>
+      <ClickAwayListener onClickAway={handleClose}>
+        <MenuContainer>
           <MenuButton onClick={handleToggle} $isActive={isOpen}>
             <IoMenu size={20} />
             <MenuAvatar sx={{ width: 32, height: 32, bgcolor: "text.secondary" }} src={user?.image ?? ""}>
               <IoPersonSharp size={20} />
             </MenuAvatar>
           </MenuButton>
-        </ClickAwayListener>
-        {isOpen && (
-          <MenuList>
-            {menuList.map(item => (
-              <>
-                {item.hasDivider && <Divider />}
-                <MenuItem
-                  key={item.label}
-                  variant="body2"
-                  onClick={item.onClick}
-                  fontWeight={item.isAccent ? FontWeight.SemiBold : FontWeight.Regular}
-                  color={item.isAccent ? "text.primary" : "text.secondary"}
-                >
-                  {item.label}
-                </MenuItem>
-              </>
-            ))}
-          </MenuList>
-        )}
-      </MenuContainer>
+          {isOpen && (
+            <MenuList>
+              {menuList.map(item => (
+                <>
+                  {item.hasDivider && <Divider />}
+                  <MenuItem
+                    key={item.label}
+                    variant="body2"
+                    onClick={() => {
+                      handleItemClick(item);
+                    }}
+                    fontWeight={item.isAccent ? FontWeight.SemiBold : FontWeight.Regular}
+                    color={item.isAccent ? "text.primary" : "text.secondary"}
+                  >
+                    {item.label}
+                  </MenuItem>
+                </>
+              ))}
+            </MenuList>
+          )}
+        </MenuContainer>
+      </ClickAwayListener>
     </Container>
   );
 };
