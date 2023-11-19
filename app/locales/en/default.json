@@ -111,7 +111,7 @@
   "trips.userempty.description": "Please login",
   "trips.reservationsempty.title": "No trips found",
   "trips.reservationsempty.description": "Looks like you haven't reserved any trips",
-  "trips.main.description": "Where yor've been and where yor're going",
+  "trips.main.description": "Where you've been and where you're going",
   "trips.delete.success": "Reservation cancelled",
   "trips.delete.error": "Failed cancelled. Please try again.",
   "trips.delete.label": "Cancel reservation",
