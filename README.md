@@ -36,8 +36,6 @@ Next.js13, React, Typescript, NextAuth, MUI, Emotion, Formik, Yup, SWR, i18n, re
 
 ## 📹유저 시나리오
 
-> 개발시간 순으로 정렬합니다.
-
 ### 메인 페이지(`/`)
 [메인 페이지 구현](https://github.com/piouy001/airdong/issues/9)
 
