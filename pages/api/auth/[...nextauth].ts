@@ -30,7 +30,7 @@ export const authOptions: AuthOptions = {
           throw new Error("Invalid credentials");
         }
 
-        const user = await prisma?.user.findUnique({
+        const user = await client.user.findUnique({
           where: {
             email: credentials.email,
           },
@@ -53,7 +53,7 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: HOME_URL,
   },
-  // debug: process.env.NODE_ENV === "development",
+  debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",
   },
