@@ -82,7 +82,9 @@ npx prisma db push
 
 ### App 실행
 
-`yarn dev`
+```
+yarn dev
+```
 
 ## 🕛회고
 1. 이전에는 사용자가 data를 변경했을 때 HTTP요청을 보내고 해당 data의 state상태를 변경해줌으로 바로 변경되는 듯한 UI를 보여주었는데 Server Component를 사용해서 DB정보를 바로 가져오니 요청만 보내면 바로 반영이 되어 좋았다.
