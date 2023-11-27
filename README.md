@@ -54,7 +54,7 @@ Next.js13, React, Typescript, NextAuth, MUI, Emotion, Formik, Yup, SWR, i18n, re
 ### package 설치
 
 ```
-yarn dev
+yarn
 ```
 
 ### .env 세팅
